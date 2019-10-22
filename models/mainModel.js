@@ -50,10 +50,30 @@ module.exports = dbPoolInstance => {
     });
   };
 
+  let userInfo = (userId, callback) => {
+    let input = [userId];
+    let queryString = "SELECT * FROM users WHERE users.id=$1";
+    dbPoolInstance.query(queryString, input, (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        if (result.rows.length > 0) {
+            callback(null, result.rows[0]);
+        
+          
+        } else {
+          callback(null, null);
+        }
+      }
+    });
+
+  }
+
   
 
   return {
    addUser,
-   checkUser
+   checkUser,
+   userInfo
   };
 };

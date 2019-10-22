@@ -68,6 +68,33 @@ module.exports = db => {
     });
   }
 
+  let homePage = (request, response) =>{
+
+    let userId = request.cookies["user_id"];
+    db.trips.userInfo(userId, (error, result) => {
+      if (error) {
+        console.error("query error:", error.stack);
+       
+      } else {
+        const data = {
+          result: result
+        }
+          response.render('allViews/home', data)
+      
+      
+      }
+    })
+   
+  }
+
+  let addTripPage = (request, response) => {
+    response.render("allViews/addTrip")
+  }
+
+  let addTrip = (request, response) => {
+    console.log(request.body)
+  }
+
 
   /**
    * ===========================================
@@ -79,6 +106,9 @@ module.exports = db => {
     registerPage: registerPage,
     register: register,
     loginPage: loginPage,
-    login: login
+    login: login,
+    homePage: homePage,
+    addTripPage: addTripPage,
+    addTrip: addTrip
   };
 };

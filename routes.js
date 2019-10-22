@@ -20,4 +20,7 @@ module.exports = (app, allModels) => {
   app.post("/register", mainController.register);
   app.get("/login", mainController.loginPage);
   app.post("/login", mainController.login);
+  app.get("/home", mainController.homePage);
+  app.get("/addtrip", mainController.addTripPage);
+  app.post("/addtrip", mainController.addTrip);
 };
