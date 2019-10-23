@@ -5,7 +5,7 @@ module.exports = (app, allModels) => {
    *  =========================================
    *  =========================================
    *  =========================================
-   *    ALL ROUTES FOR TWEET CONTROLLER
+   *    ALL ROUTES FOR CONTROLLER
    *  =========================================
    *  =========================================
    *  =========================================
@@ -22,5 +22,7 @@ module.exports = (app, allModels) => {
   app.post("/login", mainController.login);
   app.get("/home", mainController.homePage);
   app.get("/addtrip", mainController.addTripPage);
-  app.post("/addtrip", mainController.addTrip);
+  app.post("/addtrip", mainController.addTrips);
+  app.get("/attractions", mainController.attractions);
+
 };

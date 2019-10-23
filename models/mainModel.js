@@ -69,11 +69,53 @@ module.exports = dbPoolInstance => {
 
   }
 
+  let addTrip = (userId, city, tripTitle, callback) =>{
+    let input = [tripTitle, city, userId];
+    let queryString = "INSERT INTO trips (trip_name, city_name, trip_user_id) VALUES ($1, $2, $3)"
+    dbPoolInstance.query(queryString, input, (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        if (result.rows.length > 0) {
+            console.log(result.rows[0])
+    
+        }   else {
+          console.log("RESULT IS NULL")
+          console.log(result.rows.length)
+          callback(null, null);
+        }
+      }
+    });
+  }
+
+  let addItemsPage = (triptitle, callback) =>{
+    let input = [triptitle];
+    let queryString = "SELECT * FROM trips WHERE trip_name = $1";
+    dbPoolInstance.query(queryString, input, (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        if (result.rows.length > 0) {
+           callback(null, result.rows[0])
+    
+        }   else {
+          console.log("RESULT IS NULL")
+          console.log(result.rows.length)
+          callback(null, null);
+        }
+      }
+    });
+  }
+
+  
+
   
 
   return {
    addUser,
    checkUser,
-   userInfo
+   userInfo,
+   addTrip,
+   addItemsPage
   };
 };

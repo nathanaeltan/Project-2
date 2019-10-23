@@ -18,7 +18,8 @@ class Home extends React.Component {
           <h3 className="display-3">Add A Country/City</h3>
       
           <form action="/addTrip" method="POST">
-          <p><input type="text" name="country" placeholder="Search Country" id="search_term" className="form-control form-control-lg"/></p>
+          <p><input type="text" name="tripName" placeholder="Name Your Trip" className="form-control form-control-lg"/></p>
+          <p><input type="text" name="city" placeholder="Search City" id="search_term" className="form-control form-control-lg"/></p>
 
           <button className="btn btn-primary btn-lg" type="submit">Add</button>
           </form>

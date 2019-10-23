@@ -91,9 +91,40 @@ module.exports = db => {
     response.render("allViews/addTrip")
   }
 
-  let addTrip = (request, response) => {
-    console.log(request.body)
+  let addTrips = (request, response) => {
+    let userId = request.cookies["user_id"];
+    let city = request.body.city;
+    let triptitle = request.body.tripName;
+  
+    db.trips.addTrip(userId, city, triptitle, (error, result) => {
+      if (error) {
+        console.error("query error:", error.stack);
+       
+      } else {
+        
+        db.trips.addItemsPage(triptitle, (error, result) => {
+          if (error) {
+            console.error("query error:", error.stack);
+           
+          } else {
+          const data = {
+            result: result
+          }
+          response.cookie("location", result.city_name)
+          response.render("allViews/addItems", data)
+          }
+        }
+
+        )}
+    })
   }
+
+  let attractions = (request, response) => {
+    let location = request.cookies["location"]
+    response.redirect(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=Attractions+in+${location}&key=AIzaSyDvj3ORRNNhdf-Yv8R8AHZjqX_jHcnrxqo`)
+  }
+
+ 
 
 
   /**
@@ -109,6 +140,9 @@ module.exports = db => {
     login: login,
     homePage: homePage,
     addTripPage: addTripPage,
-    addTrip: addTrip
+    addTrips: addTrips,
+    attractions: attractions
+   
+    
   };
 };
