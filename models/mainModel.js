@@ -107,7 +107,24 @@ module.exports = dbPoolInstance => {
     });
   }
 
-  
+  let insertWishList = (userId, attractionName, tripId, callback) =>{
+    let input = [userId, attractionName, tripId];
+    let queryString = "INSERT INTO wishlist (user_id, attraction_name,trip_id) VALUES ($1, $2, $3)";
+    dbPoolInstance.query(queryString, input, (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        if (result.rows.length > 0) {
+           callback(null, result.rows[0])
+    
+        }   else {
+         
+          console.log(result.rows.length)
+          callback(null, null);
+        }
+      }
+    });
+  }
 
   
 
@@ -116,6 +133,7 @@ module.exports = dbPoolInstance => {
    checkUser,
    userInfo,
    addTrip,
-   addItemsPage
+   addItemsPage,
+   insertWishList
   };
 };

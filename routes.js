@@ -24,5 +24,5 @@ module.exports = (app, allModels) => {
   app.get("/addtrip", mainController.addTripPage);
   app.post("/addtrip", mainController.addTrips);
   app.get("/attractions", mainController.attractions);
-
+  app.post("/wishlist", mainController.wishlist);
 };

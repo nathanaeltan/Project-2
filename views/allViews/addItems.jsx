@@ -15,7 +15,6 @@ class Home extends React.Component {
         </head>
         <body>
           <div className="container text-center mt-5">
-        <h1>ADD ITEMS PAGE</h1>
           <h3 className="display-3 border-bottom">YOU ARE GOING TO {this.props.result.city_name}</h3>
           <p className="lead border-bottom">Here are a list of attractions in  {this.props.result.city_name}</p>
 
@@ -24,9 +23,12 @@ class Home extends React.Component {
         </ul>
 
 
-          
+         
         
-        
+        <h3>YOUR WISHLIST: </h3>
+        <ul id="wish_list" className="list-group">
+            
+            </ul>
           </div>
           <script src="/attractions.js"></script>
         </body>

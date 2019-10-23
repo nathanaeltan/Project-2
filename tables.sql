@@ -24,6 +24,6 @@ CREATE TABLE IF NOT EXISTS wishlist (
     id SERIAL PRIMARY KEY,
     user_id INTEGER,
     attraction_name TEXT,
-    itinerary_id INTEGER
+    trip_id INTEGER
 );
 

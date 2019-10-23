@@ -111,6 +111,7 @@ module.exports = db => {
             result: result
           }
           response.cookie("location", result.city_name)
+          response.cookie("trip_id", result.id)
           response.render("allViews/addItems", data)
           }
         }
@@ -124,6 +125,21 @@ module.exports = db => {
     response.send(location)
   }
 
+  let wishlist = (request, response) => {
+    let userId = request.cookies["user_id"];
+    let attractionName = request.body.name;
+    let tripId = request.cookies["trip_id"]
+
+    db.trips.insertWishList(userId, attractionName, tripId, (error, result) => {
+      if (error) {
+        console.error("query error:", error.stack);
+       
+      } else {     
+          response.send('SEND')
+
+      }
+    })
+  }
 
 
 
@@ -141,7 +157,8 @@ module.exports = db => {
     homePage: homePage,
     addTripPage: addTripPage,
     addTrips: addTrips,
-    attractions: attractions
+    attractions: attractions,
+    wishlist: wishlist
    
     
   };
