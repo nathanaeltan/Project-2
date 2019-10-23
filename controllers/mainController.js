@@ -121,10 +121,10 @@ module.exports = db => {
 
   let attractions = (request, response) => {
     let location = request.cookies["location"]
-    response.redirect(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=Attractions+in+${location}&key=AIzaSyDvj3ORRNNhdf-Yv8R8AHZjqX_jHcnrxqo`)
+    response.send(location)
   }
 
- 
+
 
 
   /**
