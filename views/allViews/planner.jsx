@@ -15,28 +15,15 @@ class Home extends React.Component {
         </head>
         <body>
           <div className="container text-center mt-5">
-          <h3 className="display-3 border-bottom">YOU ARE GOING TO {this.props.result.city_name}</h3>
-          <p className="lead border-bottom">Here are a list of attractions in  {this.props.result.city_name}</p>
-      
-        <ul id="attraction_list" className="list-group">
-
-
-        <form id="wishItem">
-
-          </form>
-
-          
-        </ul>
-
-
-         
+          <h3 className="display-3 border-bottom">Start Planning Your Trip</h3>
         
-        <h3>YOUR WISHLIST: </h3>
-        <ul id="wish_list" className="list-group">
-            
-            </ul>
+
+
+          <h4>Your Trips: </h4>
+        
+        
           </div>
-          <script src="/attractions.js"></script>
+          
         </body>
       </html>
     );

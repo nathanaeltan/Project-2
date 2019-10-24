@@ -127,7 +127,8 @@ module.exports = db => {
 
   let wishlist = (request, response) => {
     let userId = request.cookies["user_id"];
-    let attractionName = request.body.name;
+    let attractionName = request.body.attractionname;
+    console.log("THIS IS THE RREQUEST BODYSKDJNASDJKAS + ", request.body)
     let tripId = request.cookies["trip_id"]
 
     db.trips.insertWishList(userId, attractionName, tripId, (error, result) => {
@@ -135,11 +136,30 @@ module.exports = db => {
         console.error("query error:", error.stack);
        
       } else {     
-          response.send('SEND')
+
+        response.send("successfully updated server")
 
       }
     })
   }
+
+  // let plannerPage = (request, response) => {
+  //   let userId = request.cookies["user_id"];
+  //   let tripId = request.cookies["trip_id"];
+  //   db.trips.planner(userId, tripId, (error, result) => {
+  //     if (error) {
+  //       console.error("query error:", error.stack);
+       
+  //     } else {     
+  //       const data = {
+  //         result:result
+  //       }
+  //       console.log("THIS IS THE ATTRACTION " +result.attraction_name.split(""))
+  //         response.render('allViews/planner', data)
+
+  //     }
+  //   })
+  // }
 
 
 
@@ -159,6 +179,7 @@ module.exports = db => {
     addTrips: addTrips,
     attractions: attractions,
     wishlist: wishlist
+    // plannerPage: plannerPage
    
     
   };

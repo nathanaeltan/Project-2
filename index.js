@@ -11,7 +11,7 @@ const sha256 = require("js-sha256");
 
 // Init express app
 const app = express();
-
+app.use(express.json());
 // Set up middleware
 app.use(methodOverride("_method"));
 

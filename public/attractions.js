@@ -1,31 +1,66 @@
 let attractions = document.getElementById("attraction_list");
+let wishItem = document.getElementById("wishItem");
 var responseHandler = function() {
   var responseObj = JSON.parse(this.responseText);
-
+  console.log(responseObj);
   for (let i = 0; i < responseObj.results.length; i++) {
-    console.log(responseObj.results[i].name);
     let el = document.createElement("li");
     el.classList.add("list-group-item");
     el.innerHTML = `
-                <form action="/wishlist" method="POST" id="wishItem">
-                <h3>${responseObj.results[i].name}</h3>
-                <input  type="checkbox" name="name" value="${responseObj.results[i].name}"/>
-                <p>${responseObj.results[i].formatted_address}</p>
                 
+                <h3>${responseObj.results[i].name}</h3>
+                <input  type="hidden" class="attractioninput" name="name" value="${responseObj.results[i].name}"/>
+                <p>${responseObj.results[i].formatted_address}</p>
+                <button type="submit" id="addwishitem" value="${responseObj.results[i].name}" class="wishlistBtn btn btn-primary">Add To WishList</button>
                 </form>
                
                  `;
 
-    attractions.appendChild(el);
+    wishItem.append(el);
+  }
+  let allAttractions = document.querySelectorAll(".attractioninput");
+  for (let i = 0; i < allAttractions.length; i++) {
+    console.log(allAttractions[i].defaultValue);
   }
 
+  let allBtns = document.querySelectorAll(".wishlistBtn");
+  allBtns.forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      console.log("CLICKED", e.target.value);
+      const data = {
+        attractionname: e.target.value
+      };
 
+      var request = new XMLHttpRequest();
+      request.addEventListener("load", function() {
+        console.log("DONE");
+        console.log(this.responseText);
+      });
 
+      console.log(data);
+      let url = "/wishlist";
+      request.open("POST", url);
+      request.setRequestHeader(
+        "Content-Type",
+        "application/json;charset=UTF-8"
+      );
+
+      request.send(JSON.stringify(data));
+    });
+  });
+
+  // document
+  //   .getElementById("wishItem")
+  //   .addEventListener("submit", function(event) {
+  //     event.preventDefault();
+
+  //   });
 };
-
 
 // make a new request
 var request = new XMLHttpRequest();
+
 // listen for the request response
 request.addEventListener("load", responseHandler);
 

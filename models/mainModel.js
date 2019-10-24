@@ -126,7 +126,24 @@ module.exports = dbPoolInstance => {
     });
   }
 
-  
+  // let planner = (userId, tripId, callback) => {
+  //   let input=[userId, tripId];
+  //   let queryString = "SELECT * FROM wishlist WHERE user_id=$1 AND trip_id=$2";
+  //     dbPoolInstance.query(queryString, input, (error, result) => {
+  //     if (error) {
+  //       callback(error, null);
+  //     } else {
+  //       if (result.rows.length > 0) {
+  //          callback(null, result.rows[0])
+    
+  //       }   else {
+         
+  //         console.log(result.rows.length)
+  //         callback(null, null);
+  //       }
+  //     }
+  //   });
+  // }
 
   return {
    addUser,
@@ -135,5 +152,6 @@ module.exports = dbPoolInstance => {
    addTrip,
    addItemsPage,
    insertWishList
+  //  planner
   };
 };
