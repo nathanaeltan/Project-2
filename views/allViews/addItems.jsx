@@ -21,9 +21,9 @@ class Home extends React.Component {
         <ul id="attraction_list" className="list-group">
 
 
-        <form id="wishItem">
+        <ul id="wishItem">
 
-          </form>
+          </ul>
 
           
         </ul>

@@ -1,5 +1,6 @@
 let attractions = document.getElementById("attraction_list");
 let wishItem = document.getElementById("wishItem");
+let wishList = document.getElementById("wish_list")
 var responseHandler = function() {
   var responseObj = JSON.parse(this.responseText);
   console.log(responseObj);
@@ -12,25 +13,29 @@ var responseHandler = function() {
                 <input  type="hidden" class="attractioninput" name="name" value="${responseObj.results[i].name}"/>
                 <p>${responseObj.results[i].formatted_address}</p>
                 <button type="submit" id="addwishitem" value="${responseObj.results[i].name}" class="wishlistBtn btn btn-primary">Add To WishList</button>
-                </form>
+             
                
                  `;
 
     wishItem.append(el);
   }
   let allAttractions = document.querySelectorAll(".attractioninput");
-  for (let i = 0; i < allAttractions.length; i++) {
-    console.log(allAttractions[i].defaultValue);
-  }
+  for (let i = 0; i < allAttractions.length; i++) {}
 
   let allBtns = document.querySelectorAll(".wishlistBtn");
   allBtns.forEach(btn => {
     btn.addEventListener("click", e => {
       e.preventDefault();
-      console.log("CLICKED", e.target.value);
+      console.log("CLICKED", e.target);
       const data = {
         attractionname: e.target.value
       };
+
+      e.target.style.backgroundColor = "red";
+      e.target.innerText = "Added";
+      // e.target.parentNode.remove()
+      wishList.append(e.target.parentNode)
+     
 
       var request = new XMLHttpRequest();
       request.addEventListener("load", function() {
