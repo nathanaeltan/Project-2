@@ -30,5 +30,5 @@ module.exports = (app, allModels) => {
   // posts the results of users chosen attractions to a wishlist
   app.post("/wishlist", mainController.wishlist);
  
-  // app.get("/planner", mainController.plannerPage);
+  app.get("/planner", mainController.plannerPage);
 };

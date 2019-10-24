@@ -14,6 +14,7 @@ class Home extends React.Component {
           ></link>
         </head>
         <body>
+          <div className="container">
           <div className="container text-center mt-5">
           <h3 className="display-3 border-bottom">YOU ARE GOING TO {this.props.result.city_name}</h3>
           <p className="lead border-bottom">Here are a list of attractions in  {this.props.result.city_name}</p>
@@ -36,9 +37,16 @@ class Home extends React.Component {
             
             </ul>
           </div>
+
+
+      <a href="/planner" className="btn btn-success btn-block btn-lg mt-3">Confirm WishList</a>
+          </div>
+        
           <script src="/attractions.js"></script>
         </body>
       </html>
+
+
     );
   }
 }

@@ -2,6 +2,8 @@ let attractions = document.getElementById("attraction_list");
 let wishItem = document.getElementById("wishItem");
 let wishList = document.getElementById("wish_list")
 var responseHandler = function() {
+
+  // RENDERING DATA FROM THE GOOGLE API TO THE DOM 
   var responseObj = JSON.parse(this.responseText);
   console.log(responseObj);
   for (let i = 0; i < responseObj.results.length; i++) {
@@ -19,6 +21,8 @@ var responseHandler = function() {
 
     wishItem.append(el);
   }
+
+  // SENDS DATA TO THE CONTROLLER TO THE TABLE AND UPDATE BUTTTON STYLINGS AND MOVE THE ITEM TO THE WISHLIST SECTION
   let allAttractions = document.querySelectorAll(".attractioninput");
   for (let i = 0; i < allAttractions.length; i++) {}
 

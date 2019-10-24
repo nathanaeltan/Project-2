@@ -95,8 +95,11 @@ module.exports = db => {
     let userId = request.cookies["user_id"];
     let city = request.body.city;
     let triptitle = request.body.tripName;
+    let fromDate = request.body.fromDate
+    let toDate = request.body.toDate
+    console.log(request.body.fromDate)
   
-    db.trips.addTrip(userId, city, triptitle, (error, result) => {
+    db.trips.addTrip(userId, city, triptitle, fromDate, toDate, (error, result) => {
       if (error) {
         console.error("query error:", error.stack);
        
@@ -143,23 +146,24 @@ module.exports = db => {
     })
   }
 
-  // let plannerPage = (request, response) => {
-  //   let userId = request.cookies["user_id"];
-  //   let tripId = request.cookies["trip_id"];
-  //   db.trips.planner(userId, tripId, (error, result) => {
-  //     if (error) {
-  //       console.error("query error:", error.stack);
+  let plannerPage = (request, response) => {
+    let userId = request.cookies["user_id"];
+    let tripId = request.cookies["trip_id"];
+    db.trips.planner(userId, tripId, (error, result) => {
+      if (error) {
+        console.error("query error:", error.stack);
        
-  //     } else {     
-  //       const data = {
-  //         result:result
-  //       }
-  //       console.log("THIS IS THE ATTRACTION " +result.attraction_name.split(""))
-  //         response.render('allViews/planner', data)
+      } else {     
+       
+        const data = {
+          result:result
+        }
+      
+          response.render('allViews/planner', data)
 
-  //     }
-  //   })
-  // }
+      }
+    })
+  }
 
 
 
@@ -178,8 +182,8 @@ module.exports = db => {
     addTripPage: addTripPage,
     addTrips: addTrips,
     attractions: attractions,
-    wishlist: wishlist
-    // plannerPage: plannerPage
+    wishlist: wishlist,
+    plannerPage: plannerPage
    
     
   };

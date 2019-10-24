@@ -69,9 +69,9 @@ module.exports = dbPoolInstance => {
 
   }
 
-  let addTrip = (userId, city, tripTitle, callback) =>{
-    let input = [tripTitle, city, userId];
-    let queryString = "INSERT INTO trips (trip_name, city_name, trip_user_id) VALUES ($1, $2, $3)"
+  let addTrip = (userId, city, tripTitle, fromDate, toDate, callback) =>{
+    let input = [tripTitle, city, userId, fromDate, toDate];
+    let queryString = "INSERT INTO trips (trip_name, city_name, trip_user_id, from_date, to_date) VALUES ($1, $2, $3, $4, $5)"
     dbPoolInstance.query(queryString, input, (error, result) => {
       if (error) {
         callback(error, null);
@@ -80,7 +80,7 @@ module.exports = dbPoolInstance => {
             console.log(result.rows[0])
     
         }   else {
-          console.log("RESULT IS NULL")
+          
           console.log(result.rows.length)
           callback(null, null);
         }
@@ -126,24 +126,24 @@ module.exports = dbPoolInstance => {
     });
   }
 
-  // let planner = (userId, tripId, callback) => {
-  //   let input=[userId, tripId];
-  //   let queryString = "SELECT * FROM wishlist WHERE user_id=$1 AND trip_id=$2";
-  //     dbPoolInstance.query(queryString, input, (error, result) => {
-  //     if (error) {
-  //       callback(error, null);
-  //     } else {
-  //       if (result.rows.length > 0) {
-  //          callback(null, result.rows[0])
+  let planner = (userId, tripId, callback) => {
+    let input=[tripId];
+    let queryString = "SELECT wishlist.user_id, wishlist.attraction_name, trips.from_date, trips.to_date, DATE_PART('day', trips.to_Date::timestamp - trips.from_date::timestamp) FROM wishlist  INNER JOIN trips  ON (wishlist.trip_id = trips.id) WHERE trips.id=$1";
+      dbPoolInstance.query(queryString, input, (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        if (result.rows.length > 0) {
+           callback(null, result.rows)
     
-  //       }   else {
+        }   else {
          
-  //         console.log(result.rows.length)
-  //         callback(null, null);
-  //       }
-  //     }
-  //   });
-  // }
+          console.log(result.rows.length)
+          callback(null, null);
+        }
+      }
+    });
+  }
 
   return {
    addUser,
@@ -151,7 +151,7 @@ module.exports = dbPoolInstance => {
    userInfo,
    addTrip,
    addItemsPage,
-   insertWishList
-  //  planner
+   insertWishList,
+   planner
   };
 };
