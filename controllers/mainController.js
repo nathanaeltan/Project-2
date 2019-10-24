@@ -154,7 +154,7 @@ module.exports = db => {
         console.error("query error:", error.stack);
        
       } else {     
-       
+       console.log(result[0].from_date.toString())
         const data = {
           result:result
         }
@@ -165,6 +165,20 @@ module.exports = db => {
     })
   }
 
+  let schedule = (request, response) => {
+    
+
+var filterattraction = request.body.attraction.filter(function (el) {
+  return el != '';
+});
+
+let filternotes = request.body.Notes.filter(function(el){
+  return el!= ''
+})
+
+console.log(request.body);
+   
+  }
 
 
   /**
@@ -183,7 +197,8 @@ module.exports = db => {
     addTrips: addTrips,
     attractions: attractions,
     wishlist: wishlist,
-    plannerPage: plannerPage
+    plannerPage: plannerPage,
+    schedule: schedule
    
     
   };

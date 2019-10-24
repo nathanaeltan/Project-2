@@ -31,4 +31,5 @@ module.exports = (app, allModels) => {
   app.post("/wishlist", mainController.wishlist);
  
   app.get("/planner", mainController.plannerPage);
+  app.post("/schedule", mainController.schedule)
 };

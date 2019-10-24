@@ -34,7 +34,6 @@ var responseHandler = function() {
       const data = {
         attractionname: e.target.value
       };
-
       e.target.style.backgroundColor = "red";
       e.target.innerText = "Added";
       // e.target.parentNode.remove()
