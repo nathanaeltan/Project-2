@@ -4,7 +4,8 @@ console.log("HELLO");
 allbtns.forEach(btn => {
   btn.addEventListener("click", e => {
     e.preventDefault();
-
+    e.target.style.backgroundColor = "grey"
+    e.target.innerText="Edit"
     let day = e.target.parentNode.childNodes[0].value;
     let arr = e.target.parentNode.childNodes[2].childNodes[1].childNodes;
     let timeArr = [];

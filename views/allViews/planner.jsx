@@ -343,7 +343,7 @@ class Home extends React.Component {
 
       {modals}
  
-        <button className="btn btn-success btn-block mt-4">Save Trip</button>
+        <a href="/yourTrip" className="btn btn-success btn-block mt-4">Save Trip</a>
           </div>
           
 

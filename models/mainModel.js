@@ -145,7 +145,46 @@ module.exports = dbPoolInstance => {
     });
   }
 
-  
+  let insertSchedule = (tripId, details, callback) => {
+    for(let i = 0 ; i < details.length; i++) {
+      let input = [tripId, details[i].day, details[i].time, details[i].attraction]
+      let queryString = `INSERT INTO itinerary (trips_id, day, hour, attraction) VALUES ($1, $2, $3, $4)`
+      dbPoolInstance.query(queryString, input, (error, result) => {
+        if (error) {
+          callback(error, null);
+        } else {
+          if (result.rows.length > 0) {
+             callback(null, result.rows)
+      
+          }   else {
+           
+            console.log(result.rows.length)
+            callback(null, null);
+          }
+        }
+      });
+    }
+  }
+
+  let findSummary = (tripId, callback) => {
+    let input = [tripId]
+    let queryString = "SELECT * FROM itinerary WHERE trips_id = $1";
+    dbPoolInstance.query(queryString, input, (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        if (result.rows.length > 0) {
+           callback(null, result.rows)
+    
+        }   else {
+         
+          console.log(result.rows.length)
+          callback(null, null);
+        }
+      }
+    });
+  }
+
 
   return {
    addUser,
@@ -154,6 +193,8 @@ module.exports = dbPoolInstance => {
    addTrip,
    addItemsPage,
    insertWishList,
-   planner
+   planner,
+   insertSchedule,
+   findSummary
   };
 };

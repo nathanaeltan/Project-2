@@ -175,11 +175,29 @@ module.exports = db => {
        
       } else {     
 
-        response.send("successfully updated server")
+        // response.send("successfully updated server")
 
       }
     })
    
+  }
+
+  let summary = (request, response) => {
+    let tripId = request.cookies["trip_id"];
+    let location = request.cookies["location"]
+    db.trips.findSummary(tripId,(error, result) => {
+      if (error) {
+        console.error("query error:", error.stack);
+       
+      } else {     
+        const data = {
+          result: result,
+          location: location
+        }
+        response.render("allViews/summary", data)
+
+      }
+    })
   }
 
 
@@ -200,7 +218,8 @@ module.exports = db => {
     attractions: attractions,
     wishlist: wishlist,
     plannerPage: plannerPage,
-    schedule: schedule
+    schedule: schedule,
+    summary: summary
    
     
   };
