@@ -158,8 +158,8 @@ module.exports = db => {
         const data = {
           result:result
         }
-      
-          response.render('allViews/planner', data)
+      console.log(data)
+          response.render('allViews/planner2', data)
 
       }
     })
