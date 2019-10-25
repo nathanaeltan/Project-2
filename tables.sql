@@ -17,7 +17,9 @@ CREATE TABLE IF NOT EXISTS trips (
 CREATE TABLE IF NOT EXISTS itinerary (
     id SERIAL PRIMARY KEY,
     trips_id INTEGER,
-    wishlist_id INTEGER
+    day TEXT,
+    hour TEXT,
+    attraction TEXT
 );
 
 CREATE TABLE IF NOT EXISTS wishlist (

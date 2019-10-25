@@ -166,17 +166,19 @@ module.exports = db => {
   }
 
   let schedule = (request, response) => {
-    
+    let tripId = request.cookies["trip_id"];
+    let details = request.body
+    console.log(request.body)
+    db.trips.insertSchedule(tripId, details,(error, result) => {
+      if (error) {
+        console.error("query error:", error.stack);
+       
+      } else {     
 
-var filterattraction = request.body.attraction.filter(function (el) {
-  return el != '';
-});
+        response.send("successfully updated server")
 
-let filternotes = request.body.Notes.filter(function(el){
-  return el!= ''
-})
-
-console.log(request.body);
+      }
+    })
    
   }
 

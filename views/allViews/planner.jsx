@@ -21,7 +21,7 @@ class Home extends React.Component {
   <div class="modal-content">
   <h1>Day {i + 1}</h1>
   <form action="/schedule" method="POST">
-  <input type="hidden" name="day" value = {"Day" + (i + 1)}/>
+  <input type="hidden" name="day" value = {"Day" + (i + 1)} className="dayNumber"/>
   <table class="table">
     <h2 className="lead"></h2>
 <thead class="thead-dark">
@@ -36,23 +36,25 @@ class Home extends React.Component {
 <tr>
 <th scope="row">12:00am</th>
 <th>  
-      <input type="hidden" name="time" value="12:00am"/>
+    
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
 
         {list}
+        <input type="hidden" name="time" value="12:00am"/>
       </select></th>
       <td> <textarea name="Notes" id="" cols="30" rows="1.5" placeholder="Note"></textarea></td>
 </tr>
 <tr>
 <th scope="row">1:00am</th>
 <th>  
-<input type="hidden" name="time" value="1:00am"/>
+
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="1:00am"/>
       </select></th>
-      <input type="hidden" name="time" value="1:00am"/>
+      
 
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
@@ -70,45 +72,48 @@ class Home extends React.Component {
 <tr>
 <th scope="row">3:00am</th>
 <th>  
-<input type="hidden" name="time" value="3:00am"/>
+
 
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="3:00am"/>
       </select></th>
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
 <tr>
 <th scope="row">4:00am</th>
 <th>  
-<input type="hidden" name="time" value="4:00am"/>
+
 
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="4:00am"/>
       </select></th>
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
 <tr>
 <th scope="row">5:00am</th>
 <th>  
-<input type="hidden" name="time" value="5:00am"/>
+
 
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="5:00am"/>
       </select></th>
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
 <tr>
 <th scope="row">6:00am</th>
 <th>  
-<input type="hidden" name="time" value="6:00am"/>
+
 
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
-        <input type="hidden" name="time" value="7:00am"/>
+        <input type="hidden" name="time" value="6:00am"/>
 
       </select></th>
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
@@ -116,11 +121,12 @@ class Home extends React.Component {
 <tr>
 <th scope="row">7:00am</th>
 <th>  
-<input type="hidden" name="time" value="7:00am"/>
+
 
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="7:00am"/>
       </select></th>
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
@@ -130,19 +136,21 @@ class Home extends React.Component {
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="8:00am"/>
+
       </select></th>
-      <input type="hidden" name="time" value="8:00am"/>
 
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
 <tr>
 <th scope="row">9:00am</th>
 <th>  
-<input type="hidden" name="time" value="9:00am"/>
+
 
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="9:00am"/>
       </select></th>
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
@@ -152,8 +160,9 @@ class Home extends React.Component {
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="10:00am"/>
+
       </select></th>
-      <input type="hidden" name="time" value="10:00am"/>
 
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
@@ -173,21 +182,23 @@ class Home extends React.Component {
 <tr>
 <th scope="row">12:00pm</th>
 <th>  
-<input type="hidden" name="time" value="12:00pm"/>
+
 
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="12:00pm"/>
       </select></th>
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
 <tr>
 <th scope="row">1:00pm</th>
 <th> 
-<input type="hidden" name="time" value="1:00pm"/> 
+
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="1:00pm"/> 
       </select></th>
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
@@ -207,8 +218,9 @@ class Home extends React.Component {
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="3:00pm"/>
+
       </select></th>
-      <input type="hidden" name="time" value="3:00pm"/>
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
 <tr>
@@ -217,8 +229,9 @@ class Home extends React.Component {
 <select className="border-bottom" name="attraction" id="attraction" >
 <option value="">--Please choose an Attraction--</option>
         {list}
+        <input type="hidden" name="time" value="4:00pm"/>
+
       </select></th>
-      <input type="hidden" name="time" value="4:00pm"/>
       <td> <textarea name="Notes" id="" cols="30" rows="1" placeholder="Note"></textarea></td>
 </tr>
 <tr>
@@ -295,7 +308,7 @@ class Home extends React.Component {
 
 </tbody>
 </table>
-<button type="submit" className="btn btn-lg btn-success mb-3">SAVE</button>
+<button type="submit" className="btn btn-lg btn-success mb-3 save-btn">SAVE</button>
 </form>
 </div>
 </div>

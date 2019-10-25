@@ -24,7 +24,7 @@ var responseHandler = function() {
 
   // SENDS DATA TO THE CONTROLLER TO THE TABLE AND UPDATE BUTTTON STYLINGS AND MOVE THE ITEM TO THE WISHLIST SECTION
   let allAttractions = document.querySelectorAll(".attractioninput");
-  for (let i = 0; i < allAttractions.length; i++) {}
+  
 
   let allBtns = document.querySelectorAll(".wishlistBtn");
   allBtns.forEach(btn => {

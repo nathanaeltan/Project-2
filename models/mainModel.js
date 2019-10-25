@@ -145,6 +145,8 @@ module.exports = dbPoolInstance => {
     });
   }
 
+  
+
   return {
    addUser,
    checkUser,
