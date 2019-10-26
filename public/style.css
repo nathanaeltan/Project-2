@@ -1,0 +1,20 @@
+.invisible {
+    display: none;
+}
+
+.days {
+    padding: 5px 30px;
+}
+
+.days-holder {
+    overflow: auto;
+}
+/* .hours {
+    display: flex;
+    flex-direction: column;
+} */
+
+.dayText {
+    padding: 0, 120px;
+    margin: 0 400px;
+}

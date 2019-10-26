@@ -145,10 +145,10 @@ module.exports = dbPoolInstance => {
     });
   }
 
-  let insertSchedule = (tripId, details, callback) => {
+  let insertSummary = (tripId, details, callback) => {
     for(let i = 0 ; i < details.length; i++) {
-      let input = [tripId, details[i].day, details[i].time, details[i].attraction]
-      let queryString = `INSERT INTO itinerary (trips_id, day, hour, attraction) VALUES ($1, $2, $3, $4)`
+      let input = [tripId, details[i].day, details[i].attraction]
+      let queryString = `INSERT INTO summary (trips_id, day, attraction) VALUES ($1, $2, $3)`
       dbPoolInstance.query(queryString, input, (error, result) => {
         if (error) {
           callback(error, null);
@@ -166,9 +166,9 @@ module.exports = dbPoolInstance => {
     }
   }
 
-  let findSummary = (tripId, callback) => {
+  let getSummary = (tripId, callback) => {
     let input = [tripId]
-    let queryString = "SELECT * FROM itinerary WHERE trips_id = $1";
+    let queryString = `SELECT * FROM summary WHERE trips_id = $1 ORDER BY day ASC`;
     dbPoolInstance.query(queryString, input, (error, result) => {
       if (error) {
         callback(error, null);
@@ -194,7 +194,7 @@ module.exports = dbPoolInstance => {
    addItemsPage,
    insertWishList,
    planner,
-   insertSchedule,
-   findSummary
+   insertSummary,
+   getSummary
   };
 };

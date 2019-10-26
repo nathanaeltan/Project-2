@@ -165,40 +165,40 @@ module.exports = db => {
     })
   }
 
-  let schedule = (request, response) => {
+  let summary = (request, response) => {
     let tripId = request.cookies["trip_id"];
     let details = request.body
-    console.log(request.body)
-    db.trips.insertSchedule(tripId, details,(error, result) => {
+    db.trips.insertSummary(tripId, details,(error, result) => {
       if (error) {
         console.error("query error:", error.stack);
        
       } else {     
-
-        // response.send("successfully updated server")
 
       }
     })
    
   }
 
-  let summary = (request, response) => {
+  let itinPage = (request, response) => {
     let tripId = request.cookies["trip_id"];
     let location = request.cookies["location"]
-    db.trips.findSummary(tripId,(error, result) => {
+    db.trips.getSummary(tripId, (error, result) => {
       if (error) {
         console.error("query error:", error.stack);
        
       } else {     
         const data = {
           result: result,
+          attraction: result.attraction,
           location: location
         }
+       
         response.render("allViews/summary", data)
-
       }
     })
   }
+
+
 
 
   /**
@@ -218,8 +218,9 @@ module.exports = db => {
     attractions: attractions,
     wishlist: wishlist,
     plannerPage: plannerPage,
-    schedule: schedule,
-    summary: summary
+    summary: summary,
+    itinPage: itinPage
+
    
     
   };

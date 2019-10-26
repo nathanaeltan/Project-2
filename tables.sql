@@ -14,11 +14,10 @@ CREATE TABLE IF NOT EXISTS trips (
     trip_user_id INTEGER
 );
 
-CREATE TABLE IF NOT EXISTS itinerary (
+CREATE TABLE IF NOT EXISTS summary (
     id SERIAL PRIMARY KEY,
     trips_id INTEGER,
     day TEXT,
-    hour TEXT,
     attraction TEXT
 );
 

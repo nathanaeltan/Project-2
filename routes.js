@@ -31,6 +31,7 @@ module.exports = (app, allModels) => {
   app.post("/wishlist", mainController.wishlist);
  
   app.get("/planner", mainController.plannerPage);
-  app.post("/schedule", mainController.schedule)
-  app.get("/yourTrip", mainController.summary)
+  app.post("/summary", mainController.summary)
+  app.get("/yourItinerary", mainController.itinPage)
+  
 };
