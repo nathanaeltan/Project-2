@@ -147,8 +147,8 @@ module.exports = dbPoolInstance => {
 
   let insertSummary = (tripId, details, callback) => {
     for(let i = 0 ; i < details.length; i++) {
-      let input = [tripId, details[i].day, details[i].attraction]
-      let queryString = `INSERT INTO summary (trips_id, day, attraction) VALUES ($1, $2, $3)`
+      let input = [tripId, details[i].day, details[i].time, details[i].attraction]
+      let queryString = `INSERT INTO summary (trips_id, day, time, attraction) VALUES ($1, $2, $3, $4)`
       dbPoolInstance.query(queryString, input, (error, result) => {
         if (error) {
           callback(error, null);

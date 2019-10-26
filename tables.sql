@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS summary (
     id SERIAL PRIMARY KEY,
     trips_id INTEGER,
     day TEXT,
+    time TEXT,
     attraction TEXT
 );
 

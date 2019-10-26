@@ -16,11 +16,12 @@ class Home extends React.Component {
     const time = 24;
     let hours = [...Array(time)].map((e, i) => (
       <div
-      
+      id={(i + 1) + ": 00"}
         className="hours days list-group-item"
+        
       >
      
-      <p className="border-bottom" style={{width:"100%;"}}> {i + 1}:00</p>
+      <p className="border-bottom lead"> {i + 1}:00</p>
        
       </div>
     ));
@@ -63,14 +64,14 @@ class Home extends React.Component {
             </h3>
 
             <div className="row">
-              <div className="col-2">
+              <div className="col-3" style={{overflow:"auto", maxHeight:"80vh"}}>
                 <h4>Attractions: </h4>{list}</div>
            
-              <div className="col-10 d-inline-flex text-center border-bottom days-holder">
+              <div className="col-9 d-inline-flex text-center border-bottom days-holder">
                  {days}
               </div>
             </div>
-            <a href="/yourItinerary" className="btn btn-success btn-block mt-3" id="submit_btn">Submit</a>
+            <a href="#" className="btn btn-success btn-block mt-3" id="submit_btn">Submit</a>
           </div>
           <script src="/planner2.js"></script>
         </body>

@@ -93,24 +93,76 @@ let dayHolder = document.querySelector('.days-holder')
 let submit = document.getElementById('submit_btn')
 
 submit.addEventListener('click', () => {
-   let data = []
+//    let data = []
 
 
-for(let i = 1; i <days[0].childNodes.length; i++) {
-    console.log(days[0].childNodes[i].innerText)
+// for(let i = 1; i <days[0].childNodes.length; i++) {
+//     console.log(days[0].childNodes[i].innerText)
+// }
+//   days.forEach((x, i) => {
+//     let day = x.childNodes[0].innerText;
+//     let att = ""
+//     for(let i = 1; i < x.childNodes.length; i++) {
+//         att += x.childNodes[i].innerText + ", "
+//     }
+//     data.push({
+//         day: day,
+//         attraction: att
+//     })
+
+//   })
+//   var request = new XMLHttpRequest();
+//   request.addEventListener("load", function() {
+//     console.log("DONE");
+//     console.log(this.responseText);
+//   });
+  
+//   console.log(data);
+//   let url = "/summary";
+//   request.open("POST", url);
+//   request.setRequestHeader(
+//     "Content-Type",
+//     "application/json;charset=UTF-8"
+//   );
+//   request.send(JSON.stringify(data));
+// console.log(dayHolder.childNodes[0].childNodes[0])
+// let arr = dayHolder.childNodes[0].childNodes;
+// for( let i = 0; i < dayHolder.childNodes[0].childNodes.length; i ++) {
+//     console.log(dayHolder.childNodes[0].childNodes[i])
+
+//     for(let j = 1; j <dayHolder.childNodes[0].childNodes[i].childNodes.length; j++) {
+//         if(dayHolder.childNodes[0].childNodes[i].childNodes[j].childNodes[1] !== undefined) {
+//             console.log(dayHolder.childNodes[1].childNodes[0].childNodes[0].innerText, dayHolder.childNodes[0].childNodes[i].childNodes[j].childNodes[1].innerText,  dayHolder.childNodes[0].childNodes[i].childNodes[j].childNodes[1].parentElement.id)
+
+//         }
+            
+        
+       
+//     }
+// }
+
+// Loop through the days
+let dayArr = dayHolder.childNodes
+for(let i = 0; i < dayArr.length; i++) {
+    // loop through the hours in the day 
+
 }
-  days.forEach((x, i) => {
-    let day = x.childNodes[0].innerText;
-    let att = ""
-    for(let i = 1; i < x.childNodes.length; i++) {
-        att += x.childNodes[i].innerText + ", "
-    }
-    data.push({
-        day: day,
-        attraction: att
-    })
+let data = []
+dayArr.forEach((x,i)=>{
+    let day = x.childNodes[0].childNodes[0].innerText
+   dayArr[i].childNodes[0].childNodes.forEach((y, j)=>{
+       if(x.childNodes[0].childNodes[j].childNodes[1] !== undefined) {
+           let time = x.childNodes[0].childNodes[j].childNodes[0].innerText
+        let attraction = x.childNodes[0].childNodes[j].childNodes[1].innerText
+        data.push({
+            day: day,
+            time: time,
+            attraction: attraction
+        })
+       }
+   })
+})
 
-  })
   var request = new XMLHttpRequest();
   request.addEventListener("load", function() {
     console.log("DONE");
@@ -125,5 +177,4 @@ for(let i = 1; i <days[0].childNodes.length; i++) {
     "application/json;charset=UTF-8"
   );
   request.send(JSON.stringify(data));
-
 })

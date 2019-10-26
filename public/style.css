@@ -8,11 +8,10 @@
 
 .days-holder {
     overflow: auto;
+    overflow-y: scroll;
+    max-height: 80vh;
 }
-/* .hours {
-    display: flex;
-    flex-direction: column;
-} */
+
 
 .dayText {
     padding: 0, 120px;
