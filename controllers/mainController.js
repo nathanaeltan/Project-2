@@ -154,11 +154,11 @@ module.exports = db => {
         console.error("query error:", error.stack);
        
       } else {     
-       console.log(result[0].from_date.toString())
+    
         const data = {
           result:result
         }
-      console.log(data)
+     
           response.render('allViews/planner2', data)
 
       }
@@ -187,13 +187,52 @@ module.exports = db => {
         console.error("query error:", error.stack);
        
       } else {     
+       
+        var output = [];
+
+        result.forEach(function(item) {
+          var existing = output.filter(function(v, i) {
+            return v.day == item.day;
+          });
+          if (existing.length) {
+            var existingIndex = output.indexOf(existing[0]);
+            output[existingIndex].attraction = output[existingIndex].attraction.concat(item.attraction);
+            output[existingIndex].time = output[existingIndex].time.concat(item.time);
+          } else {
+            if (typeof item.attraction == 'string' && typeof item.time =='string')
+              item.attraction = [item.attraction];
+              item.time = [item.time]
+            output.push(item);
+          }
+        });
+        
+      
+       
+        let test =[]
+        output.forEach((x, i) => {
+          let event = []
+          
+          let day = x.day;
+          x.time.forEach((y, j) =>{
+            event.push({
+              time: x.time[j],
+              attraction: x.attraction[j]
+            })
+          })
+          test.push({
+            day: day,
+            event:event
+        
+          })
+
+        })
+        console.log(test[0].event)
         const data = {
-          result: result,
-          attraction: result.attraction,
-          location: location
+        location: location,
+          test: test
         }
        
-        response.render("allViews/summary", data)
+        response.render("allViews/summary" , data)
       }
     })
   }

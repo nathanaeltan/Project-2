@@ -2,18 +2,25 @@ var React = require("react");
 
 class Home extends React.Component {
   render() {
-    let list = this.props.result.map(item => {
-      let arr = item.attraction.split(", ", item.attraction.length);
-      let attList = arr.map(item => {
-        return <h5 className="border-bottom pb-2">{item} <br/></h5>;
-      });
-      return (
-        <li className="list-group-item ml-4 mt-4" style={{}}>
-          <h3 className="border-bottom pb-3">{item.day}</h3>
-          {attList}
-        </li>
-      );
-    });
+    let arr = this.props.test
+ 
+    
+    
+    let list = arr.map((item) => {
+     
+      return(
+        <ul className="list-group-item ml-4 "> <h3>{item.day}</h3> 
+        <div className="row">
+        <li className="list-group-item">{item.event.map(el => <p>{el.time}</p>)}</li>
+        <li className="list-group-item">{item.event.map(el => <p>{el.attraction}</p>)}</li>
+         
+        </div>
+      
+    
+      </ul>
+       
+      )
+    })
     return (
       <html>
         <head>

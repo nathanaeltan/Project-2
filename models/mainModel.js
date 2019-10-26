@@ -168,12 +168,13 @@ module.exports = dbPoolInstance => {
 
   let getSummary = (tripId, callback) => {
     let input = [tripId]
-    let queryString = `SELECT * FROM summary WHERE trips_id = $1 ORDER BY day ASC`;
+    let queryString = `SELECT * FROM summary WHERE trips_id = $1 ORDER BY day, time ASC`;
     dbPoolInstance.query(queryString, input, (error, result) => {
       if (error) {
         callback(error, null);
       } else {
         if (result.rows.length > 0) {
+          
            callback(null, result.rows)
     
         }   else {

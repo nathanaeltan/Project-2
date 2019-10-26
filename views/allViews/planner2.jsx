@@ -71,7 +71,7 @@ class Home extends React.Component {
                  {days}
               </div>
             </div>
-            <a href="#" className="btn btn-success btn-block mt-3" id="submit_btn">Submit</a>
+            <a href="/yourItinerary" className="btn btn-success btn-block mt-3" id="submit_btn">Submit</a>
           </div>
           <script src="/planner2.js"></script>
         </body>
