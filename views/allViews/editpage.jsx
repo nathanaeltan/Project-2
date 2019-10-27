@@ -2,49 +2,16 @@ var React = require("react");
 
 class Home extends React.Component {
   render() {
+
     let list = this.props.result.map(item => {
-      return (
-        <li
-          draggable="true"
-          className="list-group-item items"
-          value={item.attraction_name}
-        >
-          {item.attraction_name}
-        </li>
-      );
-    });
-    const time = 24;
-    let hours = [...Array(time)].map((e, i) => (
-      <div
-      id={"0"+(i + 1) + ": 00"}
-        className="hours days list-group-item"
-        
-      >
-     
-      <p className="border-bottom lead"> {i + 1}:00</p>
-       
-      </div>
-    ));
-
-    const n = this.props.result[0].date_part; 
-
-    let days = [...Array(n)].map((e, i) => (
-      <div
-     
-        className=" ml-1 border row"
-      >
-      <div className="col-12">
-      <h4 className="border-bottom dayText" > Day {i + 1}</h4>
-      {hours}
-      </div>
-      
-    
-       
-      </div>
-    ));
-    
-  
-
+        return(
+            <li>
+                {item.day}
+                {item.attraction}
+                {item.time}
+            </li>
+        )
+    })
      
     return (
       <html>
@@ -65,10 +32,10 @@ class Home extends React.Component {
 
             <div className="row">
               <div className="col-3" style={{overflow:"auto", maxHeight:"80vh"}}>
-                <h4>Attractions: </h4>{list}</div>
-           
+                <h4>Attractions: </h4></div>
+           {list}
               <div className="col-9 d-inline-flex text-center border-bottom days-holder">
-                 {days}
+               
               </div>
             </div>
             <a href="/yourItinerary" className="btn btn-success btn-block mt-3" id="submit_btn">Submit</a>

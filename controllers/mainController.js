@@ -226,7 +226,7 @@ module.exports = db => {
           })
 
         })
-        console.log(test[0].event)
+      
         const data = {
         location: location,
           test: test
@@ -237,7 +237,103 @@ module.exports = db => {
     })
   }
 
+let getAllTrips = (request, response) => {
+  let userId = request.cookies["user_id"];
+  db.trips.getUsersTrips(userId,(error, result) => {
+    if (error) {
+      console.error("query error:", error.stack);
+     
+    } else {     
 
+      const data = {
+        result: result
+      }
+      
+      response.render('allViews/allUserTrips', data)
+    }
+  })
+
+}
+let getATrip = (request, response) => {
+  let tripId = request.params.id;
+  let userId = request.cookies["user_id"];
+  db.trips.getAUserTrip(userId, tripId,(error, result) => {
+    if (error) {
+      console.error("query error:", error.stack);
+     
+    } else {     
+
+      var output = [];
+
+      result.forEach(function(item) {
+        var existing = output.filter(function(v, i) {
+          return v.day == item.day;
+        });
+        if (existing.length) {
+          var existingIndex = output.indexOf(existing[0]);
+          output[existingIndex].attraction = output[existingIndex].attraction.concat(item.attraction);
+          output[existingIndex].time = output[existingIndex].time.concat(item.time);
+        } else {
+          if (typeof item.attraction == 'string' && typeof item.time =='string')
+            item.attraction = [item.attraction];
+            item.time = [item.time]
+          output.push(item);
+        }
+      });
+      
+    
+     
+      let test =[]
+      output.forEach((x, i) => {
+        let event = []
+        
+        let day = x.day;
+        x.time.forEach((y, j) =>{
+          event.push({
+            time: x.time[j],
+            attraction: x.attraction[j]
+          })
+        })
+        test.push({
+          day: day,
+          event:event
+      
+        })
+
+      })
+    
+      const data = {
+     result:result,
+        test: test,
+        tripId: tripId
+      }
+      
+    
+      response.render("allViews/individualTrip" , data)
+    }
+  })
+
+
+}
+
+let editTrip = (request, response) => {
+  let tripId = request.params.id;
+  let userId = request.cookies["user_id"];
+
+  db.trips.editPage(tripId, userId, (error, result) => {
+    if (error) {
+      console.error("query error:", error.stack);
+     
+    } else {     
+
+      const data = {
+        result: result
+      }
+      console.log(result)
+      response.render("allViews/editpage", data)
+    }
+  })
+}
 
 
   /**
@@ -258,7 +354,10 @@ module.exports = db => {
     wishlist: wishlist,
     plannerPage: plannerPage,
     summary: summary,
-    itinPage: itinPage
+    itinPage: itinPage,
+    getAllTrips: getAllTrips,
+    getATrip: getATrip,
+    editTrip: editTrip
 
    
     

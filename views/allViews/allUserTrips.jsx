@@ -2,7 +2,16 @@ var React = require("react");
 
 class Home extends React.Component {
   render() {
-  
+  let list = this.props.result.map(item => {
+      return(
+          <li className="list-group-item">
+              <a href={"/allTrips/" + item.id}>{item.trip_name}</a>
+              <p>City: {item.city_name}</p>
+              <p>Duration: <br/> {item.from_date.toString().slice(0, 15)} <br/>
+              To <br/> {item.to_date.toString().slice(0, 15)} </p>
+          </li>
+      )
+  })
     return (
       <html>
         <head>
@@ -15,16 +24,13 @@ class Home extends React.Component {
         </head>
         <body>
           <div className="container text-center mt-5">
-         
-          <h3 className="display-3 border-bottom">Welcome to MyTripPlanner {this.props.result.name}</h3>
-         
-         <div className="btn_container mt-5">
-         <a href="/addtrip" className="btn btn-primary">Add A Trip</a>
-
-
-        <a href="/allTrips" className="btn btn-primary ml-4">See All Trips</a>
-         </div>
+          <h3 className="display-3 border-bottom">HERE ARE YOUR TRIPS</h3>
           
+        <ul className="list-group">
+        {list}
+        </ul>
+
+        
         
         
           </div>
