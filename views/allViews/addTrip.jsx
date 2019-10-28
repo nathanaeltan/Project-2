@@ -1,5 +1,5 @@
 var React = require("react");
-
+const Navbar = require("./navbar.jsx");
 class Home extends React.Component {
   render() {
    
@@ -14,6 +14,7 @@ class Home extends React.Component {
           ></link>
         </head>
         <body>
+          <Navbar/>
           <div className="container text-center">
           <h3 className="display-3">Add A Country/City</h3>
       

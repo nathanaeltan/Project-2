@@ -1,21 +1,29 @@
 let attractions = document.getElementById("attraction_list");
 let wishItem = document.getElementById("wishItem");
 let wishList = document.getElementById("wish_list")
+let API_KEY = "AIzaSyDvj3ORRNNhdf-Yv8R8AHZjqX_jHcnrxqo"
 var responseHandler = function() {
 
   // RENDERING DATA FROM THE GOOGLE API TO THE DOM 
   var responseObj = JSON.parse(this.responseText);
   console.log(responseObj);
   for (let i = 0; i < responseObj.results.length; i++) {
+    let photoUrl = responseObj.results[i].photos[0].photo_reference
+    let placeId = responseObj.results[i].place_id
+
+    
     let el = document.createElement("li");
     el.classList.add("list-group-item");
     el.innerHTML = `
-                
+
                 <h3>${responseObj.results[i].name}</h3>
+                <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=200&photoreference=${photoUrl}&key=${API_KEY}" alt="" height: auto width: 200px/>
+
                 <input  type="hidden" class="attractioninput" name="name" value="${responseObj.results[i].name}"/>
                 <p>${responseObj.results[i].formatted_address}</p>
+                <p>Rating: ${responseObj.results[i].rating}</p>
                 <button type="submit" id="addwishitem" value="${responseObj.results[i].name}" class="wishlistBtn btn btn-primary">Add To WishList</button>
-             
+            
                
                  `;
 
@@ -58,12 +66,7 @@ var responseHandler = function() {
     });
   });
 
-  // document
-  //   .getElementById("wishItem")
-  //   .addEventListener("submit", function(event) {
-  //     event.preventDefault();
 
-  //   });
 };
 
 // make a new request

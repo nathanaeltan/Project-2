@@ -1,5 +1,5 @@
 var React = require("react");
-
+const Navbar = require("./navbar.jsx");
 class Home extends React.Component {
   render() {
     let arr = this.props.test
@@ -32,6 +32,7 @@ class Home extends React.Component {
           ></link>
         </head>
         <body>
+          <Navbar/>
           <div className="container text-center mt-5">
             <h3 className="display-4 border-bottom">
               Here is your Itinenary for {this.props.location}

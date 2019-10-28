@@ -35,5 +35,7 @@ module.exports = (app, allModels) => {
   app.get("/yourItinerary", mainController.itinPage)
   app.get("/allTrips", mainController.getAllTrips);
   app.get("/allTrips/:id", mainController.getATrip);
-  app.get("/allTrips/:id/edit", mainController.editTrip)
+  app.get("/allTrips/:id/edit", mainController.editTrip);
+  app.delete("/deleteTrip/:id", mainController.deleteTrip);
+  app.get("/search", mainController.search)
 };

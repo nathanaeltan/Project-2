@@ -1,5 +1,5 @@
 var React = require("react");
-
+const Navbar = require("./navbar.jsx");
 class Home extends React.Component {
   render() {
     let arr = this.props.test
@@ -11,7 +11,7 @@ class Home extends React.Component {
       return(
         <ul className="list-group-item ml-4 text-center"> <h3>{item.day}</h3> 
         <div className=" d-flex justify-content-center" >
-        <li className="list-group-item col-2"  >{item.event.map(el => <p className=" border-bottom">{el.time}</p>)}</li>
+        <li className="list-group-item col-2"  >{item.event.map(el => <p className=" border-bottom">{el.time.toString().slice(0,5)}</p>)}</li>
         <li className="list-group-item col-7" >{item.event.map(el => <p className=" border-bottom" draggable="true">{el.attraction}</p>)}</li>
          
         </div>
@@ -32,6 +32,7 @@ class Home extends React.Component {
           ></link>
         </head>
         <body>
+        <Navbar/>
           <div className="container text-center mt-5" >
             <h3 className="display-4 border-bottom">
               Here is your Itinenary for {this.props.result[0].city_name}
@@ -39,9 +40,11 @@ class Home extends React.Component {
             
             <div className="col-12 " >{list}</div>
           </div>
-        <div className="btn_container text-center mt-3">
-        <a href="/home" className="btn btn-primary btn-lg">Back To Home</a>
+        <div className="btn_container mt-3 pb-4 d-flex justify-content-center">
+        <a href="/allTrips" className="btn btn-primary btn-lg">Back To Trips</a>
         <a href="#" className="btn btn-secondary btn-lg ml-3" id="edit_btn">Edit</a>
+        <form action={"/deleteTrip/" + this.props.result[0].id + '?_method=delete'} method="POST"><button  className="btn btn-danger btn-lg ml-3" id="delete_btn">Delete</button></form>
+        
         </div>
         <script src="/edit.js"></script>
         </body>

@@ -1,6 +1,6 @@
 var React = require("react");
 
-class Home extends React.Component {
+class Register extends React.Component {
   render() {
     let message = ""
     if(this.props.message === "USER NAME TAKEN PLEASE USE ANOTHER NAME"){
@@ -19,14 +19,14 @@ class Home extends React.Component {
           ></link>
         </head>
         <body>
-          <div className="container text-center">
-          <h3 className="display-3">Please Register</h3>
+          <div className="container text-center" style={{padding: "50px 90px;"}}>
+          <h3 className="display-5">Please Register</h3>
           {message}
           <form action="/register" method="POST">
-          <p><input type="text" name="name" placeholder="Name" className="form-control form-control-lg"/></p>
-          <p><input type="email" name="email" placeholder="Email" className="form-control form-control-lg"/></p>
-          <p><input type="text" name="username" placeholder="User Name" className="form-control form-control-lg"/></p>
-          <p> <input type="password" name="password" placeholder="Password" className="form-control form-control-lg"/></p>
+          <p><input type="text" name="name" placeholder="Name" className="form-control form-control-lg" required/></p>
+          <p><input type="email" name="email" placeholder="Email" className="form-control form-control-lg" required/></p>
+          <p><input type="text" name="username" placeholder="User Name" className="form-control form-control-lg" required/></p>
+          <p> <input type="password" name="password" placeholder="Password" className="form-control form-control-lg" required/></p>
           <button className="btn btn-primary btn-lg" type="submit">Register</button>
           </form>
           </div>
@@ -37,4 +37,4 @@ class Home extends React.Component {
   }
 }
 
-module.exports = Home;
+module.exports = Register;

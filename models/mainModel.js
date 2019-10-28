@@ -52,7 +52,7 @@ module.exports = dbPoolInstance => {
 
   let userInfo = (userId, callback) => {
     let input = [userId];
-    let queryString = "SELECT * FROM users WHERE users.id=$1";
+    let queryString = "SELECT users.username, trips.id, trips.trip_name, trips.city_name, trips.trip_user_id, trips.from_date, trips.to_date FROM users INNER JOIN trips ON (trips.trip_user_id = users.id) WHERE users.id = $1  ORDER BY trips.id DESC LIMIT 1;  ";
     dbPoolInstance.query(queryString, input, (error, result) => {
       if (error) {
         callback(error, null);
@@ -208,7 +208,7 @@ module.exports = dbPoolInstance => {
 
   let getAUserTrip = (userId, tripId, callback) => {
     let input = [userId, tripId];
-    let queryString = "SELECT summary.day, summary.time, summary.attraction, trips.city_name FROM summary INNER JOIN trips ON (summary.trips_id = trips.id) WHERE trips.trip_user_id = $1 AND summary.trips_id=$2 ORDER BY day, time ASC;"
+    let queryString = "SELECT summary.day, summary.time, summary.attraction, trips.city_name, trips.id FROM summary INNER JOIN trips ON (summary.trips_id = trips.id) WHERE trips.trip_user_id = $1 AND summary.trips_id=$2 ORDER BY day, time ASC;"
     dbPoolInstance.query(queryString, input, (error, result) => {
       if (error) {
         callback(error, null);
@@ -246,6 +246,44 @@ dbPoolInstance.query(queryString, input, (error, result) => {
 });
 }
 
+let deleteUserTrip = (tripId, callback) => {
+  let input = [tripId]
+  let queryString = "DELETE FROM trips WHERE trips.id = $1"
+  dbPoolInstance.query(queryString, input, (error, result) => {
+    if (error) {
+      callback(error, null);
+    } else {
+      if (result.rows.length > 0) {
+        
+         callback(null, result.rows)
+  
+      }   else {
+       
+        console.log(result.rows.length)
+        callback(null, null);
+      }
+    }
+  });
+}
+
+let searchTrips = (userId, callback) => {
+  let input = [userId];
+  let queryString = "SELECT * FROM trips WHERE trips.trip_user_id = $1";
+  dbPoolInstance.query(queryString, input, (error, result) => {
+    if (error) {
+      callback(error, null);
+    } else {
+      if (result.rows.length > 0) {
+        
+         callback(null, result.rows)
+  
+      }   else {
+       
+        callback(null, null);
+      }
+    }
+  });
+}
   return {
    addUser,
    checkUser,
@@ -258,6 +296,8 @@ dbPoolInstance.query(queryString, input, (error, result) => {
    getSummary,
    getUsersTrips,
    getAUserTrip,
-   editPage
+   editPage,
+   deleteUserTrip,
+   searchTrips
   };
 };

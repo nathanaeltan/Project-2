@@ -1,17 +1,25 @@
 var React = require("react");
-
+const Navbar = require("./navbar.jsx");
 class Home extends React.Component {
   render() {
+
   let list = this.props.result.map(item => {
       return(
-          <li className="list-group-item">
-              <a href={"/allTrips/" + item.id}>{item.trip_name}</a>
+          <div className="card">
+            <div className="card-body">
+            <h3 className="card-title"> <a href={"/allTrips/" + item.id}>{item.trip_name}</a></h3>
               <p>City: {item.city_name}</p>
               <p>Duration: <br/> {item.from_date.toString().slice(0, 15)} <br/>
               To <br/> {item.to_date.toString().slice(0, 15)} </p>
-          </li>
+            </div>
+            
+          </div>
       )
   })
+  let half = Math.ceil(list.length / 2);
+  let leftSide = list.slice(0, half);
+  let rightSide = list.slice(half, list.length);
+
     return (
       <html>
         <head>
@@ -23,13 +31,16 @@ class Home extends React.Component {
           ></link>
         </head>
         <body>
+        <Navbar/>
           <div className="container text-center mt-5">
           <h3 className="display-3 border-bottom">HERE ARE YOUR TRIPS</h3>
+         
           
-        <ul className="list-group">
-        {list}
-        </ul>
-
+     
+          <div className="row">
+              <div className="col">{leftSide}</div>
+              <div className="col">{rightSide}</div>
+            </div>
         
         
         

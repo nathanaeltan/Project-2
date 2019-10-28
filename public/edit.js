@@ -6,4 +6,5 @@ editBtn.addEventListener('click', ()=> {
     console.log('clicked')
     editBtn.style.backgroundColor="red"
     editBtn.innerText = "Save"
+    
 })

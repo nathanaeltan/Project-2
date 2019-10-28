@@ -335,6 +335,51 @@ let editTrip = (request, response) => {
   })
 }
 
+let deleteTrip = (request, response) => {
+  let tripId = request.params.id;
+  db.trips.deleteUserTrip(tripId,  (error, result) => {
+    if (error) {
+      console.error("query error:", error.stack);
+     
+    } else {     
+
+      
+    
+      response.redirect("/allTrips")
+    }
+  })
+}
+
+let search = (request, response) => {
+  let searchTerm = request.query.query;
+  let userId = request.cookies["user_id"];
+
+  db.trips.searchTrips(userId,  (error, result) => {
+    if (error) {
+      console.error("query error:", error.stack);
+     
+    } else {     
+      let searchArr = []
+  
+    for(let i = 0; i < result.length; i++) {
+      let tripName = result[i].trip_name.toLowerCase();
+      let cityName = result[i].city_name.toLowerCase();
+      if(tripName.includes(searchTerm.toLowerCase()) || cityName.includes(searchTerm.toLowerCase())) {
+        searchArr.push(result[i])
+      }
+    }
+
+    const data = {
+      result: searchArr
+    }
+
+    console.log(searchArr)
+      response.render("allViews/searchResult", data)
+    }
+  })
+}
+
+
 
   /**
    * ===========================================
@@ -357,7 +402,9 @@ let editTrip = (request, response) => {
     itinPage: itinPage,
     getAllTrips: getAllTrips,
     getATrip: getATrip,
-    editTrip: editTrip
+    editTrip: editTrip,
+    deleteTrip: deleteTrip,
+    search: search
 
    
     
