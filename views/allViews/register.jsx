@@ -17,6 +17,7 @@ class Register extends React.Component {
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
             crossOrigin="anonymous"
           ></link>
+          <link rel="stylesheet" href="/font.css"/>
         </head>
         <body>
           <div className="container text-center" style={{padding: "50px 90px;"}}>

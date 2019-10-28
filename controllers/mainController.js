@@ -370,13 +370,23 @@ let search = (request, response) => {
     }
 
     const data = {
-      result: searchArr
+      result: searchArr,
+      searchTerm: searchTerm
     }
 
     console.log(searchArr)
       response.render("allViews/searchResult", data)
     }
   })
+}
+
+let logout = (request, response) => {
+  response.clearCookie("user_id")
+  response.clearCookie("logged_in")
+  response.clearCookie("user_name")
+  response.clearCookie("location")
+  response.clearCookie("trip_id")
+  response.redirect('/welcome')
 }
 
 
@@ -404,7 +414,8 @@ let search = (request, response) => {
     getATrip: getATrip,
     editTrip: editTrip,
     deleteTrip: deleteTrip,
-    search: search
+    search: search,
+    logout: logout
 
    
     

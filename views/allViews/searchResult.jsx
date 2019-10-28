@@ -23,12 +23,13 @@ class Results extends React.Component {
     return (
       <html>
       <head>
+      <link rel="stylesheet" href="font.css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
         </head>
        <body>
          <Nav/>
          <div className="container text-center pt-4">
-         <h1 className="display-3">Results</h1>
+         <h1 className="display-3">Trips containing '{this.props.searchTerm}'</h1>
       {list}
            
          </div>

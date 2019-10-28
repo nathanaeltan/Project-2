@@ -1,6 +1,6 @@
 var React = require("react");
 const Navbar = require("./navbar.jsx");
-class Home extends React.Component {
+class AddTrip extends React.Component {
   render() {
    
     return (
@@ -12,11 +12,12 @@ class Home extends React.Component {
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
             crossOrigin="anonymous"
           ></link>
+          <link rel="stylesheet" href="font.css"/>
         </head>
         <body>
           <Navbar/>
-          <div className="container text-center">
-          <h3 className="display-3">Add A Country/City</h3>
+          <div className="container text-center mt-5 border pb-4 pt-4">
+          <h3 className="display-4">Add A Trip</h3>
       
           <form action="/addTrip" method="POST">
           <p><input type="text" name="tripName" placeholder="Name Your Trip" className="form-control form-control-lg"/></p>
@@ -43,4 +44,4 @@ class Home extends React.Component {
   }
 }
 
-module.exports = Home;
+module.exports = AddTrip;

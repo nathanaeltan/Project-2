@@ -56,6 +56,7 @@ class Home extends React.Component {
             crossOrigin="anonymous"
           ></link>
           <link rel="stylesheet" href="style.css" />
+          <link rel="stylesheet" href="font.css"/>
         </head>
         <body>
         <Navbar/>

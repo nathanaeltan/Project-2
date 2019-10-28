@@ -18,13 +18,16 @@ class Home extends React.Component {
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
             crossOrigin="anonymous"
           ></link>
+          <link rel="stylesheet" href="/font.css"/>
           <link rel="stylesheet" href="landing.css"/>
+          
+
         </head>
         <body>
        <header id="showcase">
        <div className="container text-center showcasetext">
            
-           <h3 className="display-1 border-bottom pt-5 text-white">Welcome to EZ TRIPPER</h3>
+           <h3 className="display-3 border-bottom pt-5 text-white">Welcome to <strong>EZ TRIPPER</strong> </h3>
          {message}
          <div className="container mt-4">
          {/* <a href="/register" className="btn btn-primary btn btn-lg ">Register</a> */}

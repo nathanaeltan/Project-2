@@ -30,6 +30,7 @@ class Home extends React.Component {
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
             crossOrigin="anonymous"
           ></link>
+        <link rel="stylesheet" href="/font.css"/>
         </head>
         <body>
         <Navbar/>
