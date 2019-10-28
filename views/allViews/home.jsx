@@ -1,8 +1,35 @@
 var React = require("react");
 const Navbar = require("./navbar.jsx");
-const AddTrip = require("./addTrip.jsx");
+
 class Home extends React.Component {
   render() {
+
+    let username;
+    if (this.props.message === "NO TRIPS") {
+      username = this.props.result.username.toUpperCase()
+    } else if(this.props.message === "TRIPS AVAILABLE"){
+      username = this.props.result.username.toUpperCase()
+    }
+  
+
+    let latestTrip;
+    if(this.props.message === "NO TRIPS") {
+    latestTrip = ""
+    } else if(this.props.message === "TRIPS AVAILABLE"){
+      latestTrip = <li className="list-group-item">
+      <a href={"/allTrips/" + this.props.result.id}>
+        {this.props.result.trip_name}
+      </a>
+      <p>City: {this.props.result.city_name}</p>
+      <p>
+        Duration: <br />{" "}
+        {this.props.result.from_date.toString().slice(0, 15)} <br />
+        To <br /> {this.props.result.to_date
+          .toString()
+          .slice(0, 15)}{" "}
+      </p>
+    </li> 
+    }
     return (
       <html>
         <head>
@@ -18,9 +45,9 @@ class Home extends React.Component {
           <Navbar />
           <div className="container text-center mt-5">
             <h3 className="display-3 border-bottom">
-              Welcome to EZ Tripper {this.props.result.username}
+              Welcome {username}
             </h3>
-            <p className="lead">Start Planning Your Next Trip</p>
+            <p className="lead">Start Planning Your Next Trip!</p>
 
             <div className="btn_container mt-5 ">
               <a href="/addtrip" className="btn btn-primary btn-lg p-3">
@@ -34,19 +61,7 @@ class Home extends React.Component {
           </div>
           <div className="container text-center mt-5">
             <h1>Your Latest Trip: </h1>
-            <li className="list-group-item">
-              <a href={"/allTrips/" + this.props.result.id}>
-                {this.props.result.trip_name}
-              </a>
-              <p>City: {this.props.result.city_name}</p>
-              <p>
-                Duration: <br />{" "}
-                {this.props.result.from_date.toString().slice(0, 15)} <br />
-                To <br /> {this.props.result.to_date
-                  .toString()
-                  .slice(0, 15)}{" "}
-              </p>
-            </li>
+          {latestTrip}
             <footer className="footer mt-5">
               <div className="container-fluid">
                 <p className="copyright">&copy; 2019 EZ Tripper</p>

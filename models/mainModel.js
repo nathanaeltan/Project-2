@@ -61,12 +61,32 @@ module.exports = dbPoolInstance => {
             callback(null, result.rows[0]);
         
           
-        } else {
-          callback(null, null);
+        } else if( result.rows.length === 0){
+          callback(null, "NO TRIPS");
+          
         }
       }
     });
 
+  }
+
+  let noTrips = (userId, callback) => {
+let input = [userId]
+let queryString = "SELECT * FROM users WHERE id = $1"
+dbPoolInstance.query(queryString, input, (error, result) => {
+  if (error) {
+    callback(error, null);
+  } else {
+    if (result.rows.length >= 0) {
+        console.log(result.rows[0])
+callback(null, result.rows[0])
+    }   else {
+      
+      console.log(result.rows.length)
+      callback(null, null);
+    }
+  }
+});
   }
 
   let addTrip = (userId, city, tripTitle, fromDate, toDate, callback) =>{
@@ -168,7 +188,8 @@ module.exports = dbPoolInstance => {
 
   let getSummary = (tripId, callback) => {
     let input = [tripId]
-    let queryString = `SELECT * FROM summary WHERE trips_id = $1 ORDER BY day ASC , time ASC`;
+    // let queryString = `SELECT * FROM summary WHERE trips_id = $1 ORDER BY day ASC , time ASC`;
+    let queryString = `SELECT summary.id, summary.trips_id, summary.day, summary.time, summary.attraction, trips.from_date, trips.to_Date FROM summary INNER JOIN trips ON (summary.trips_id = trips.id) WHERE summary.trips_id = $1 ORDER by day ASC, time ASC`;
     dbPoolInstance.query(queryString, input, (error, result) => {
       if (error) {
         callback(error, null);
@@ -197,10 +218,10 @@ module.exports = dbPoolInstance => {
           
            callback(null, result.rows)
     
-        }   else {
+        }   else if(result.rows.length === 0){
          
-          console.log(result.rows.length)
-          callback(null, null);
+          
+          callback(null, "NO TRIPS TO SHOW");
         }
       }
     });
@@ -208,7 +229,7 @@ module.exports = dbPoolInstance => {
 
   let getAUserTrip = (userId, tripId, callback) => {
     let input = [userId, tripId];
-    let queryString = "SELECT summary.day, summary.time, summary.attraction, trips.city_name, trips.id FROM summary INNER JOIN trips ON (summary.trips_id = trips.id) WHERE trips.trip_user_id = $1 AND summary.trips_id=$2 ORDER BY day, time ASC;"
+    let queryString = "SELECT summary.day, summary.time, summary.attraction, trips.city_name, trips.id, trips.from_date, trips.to_date FROM summary INNER JOIN trips ON (summary.trips_id = trips.id) WHERE trips.trip_user_id = $1 AND summary.trips_id=$2 ORDER BY day, time ASC;"
     dbPoolInstance.query(queryString, input, (error, result) => {
       if (error) {
         callback(error, null);
@@ -288,6 +309,7 @@ let searchTrips = (userId, callback) => {
    addUser,
    checkUser,
    userInfo,
+   noTrips,
    addTrip,
    addItemsPage,
    insertWishList,
@@ -298,6 +320,7 @@ let searchTrips = (userId, callback) => {
    getAUserTrip,
    editPage,
    deleteUserTrip,
-   searchTrips
+   searchTrips,
+   
   };
 };

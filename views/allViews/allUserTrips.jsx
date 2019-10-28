@@ -3,7 +3,14 @@ const Navbar = require("./navbar.jsx");
 class Home extends React.Component {
   render() {
 
-  let list = this.props.result.map(item => {
+  let list;
+  let title;
+  if(this.props.message === "NO TRIPS TO SHOW") {
+    title = "No Trips To Show"
+    list= ""
+  } else {
+    title= "Here Are Your Trips: "
+    list =  this.props.result.map(item => {
       return(
           <div className="card">
             <div className="card-body">
@@ -16,6 +23,9 @@ class Home extends React.Component {
           </div>
       )
   })
+  }
+  
+ 
   let half = Math.ceil(list.length / 2);
   let leftSide = list.slice(0, half);
   let rightSide = list.slice(half, list.length);
@@ -34,7 +44,7 @@ class Home extends React.Component {
         <body>
         <Navbar/>
           <div className="container text-center mt-5">
-          <h3 className="display-3 border-bottom">HERE ARE YOUR TRIPS</h3>
+          <h3 className="display-3 border-bottom">{title}</h3>
          
           
      

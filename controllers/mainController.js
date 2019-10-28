@@ -75,14 +75,27 @@ module.exports = db => {
       if (error) {
         console.error("query error:", error.stack);
        
-      } else {
-        const data = {
-          result: result
+      } else if(result === "NO TRIPS") {
+          db.trips.noTrips(userId, (error, posteddata) => {
+          const data = {
+            result: posteddata,
+            message: "NO TRIPS"
+          }
+            response.render('allViews/home', data)
+          
+          })
+          
+          } else {
+          const data = {
+            result: result,
+            message: "TRIPS AVAILABLE"
+          }
+          console.log(result)
+            response.render('allViews/home', data)
+       
+        
         }
-          response.render('allViews/home', data)
       
-      
-      }
     })
    
   }
@@ -229,7 +242,8 @@ module.exports = db => {
       
         const data = {
         location: location,
-          test: test
+          test: test,
+          result: result
         }
        
         response.render("allViews/summary" , data)
@@ -243,8 +257,14 @@ let getAllTrips = (request, response) => {
     if (error) {
       console.error("query error:", error.stack);
      
+    } else if (result === "NO TRIPS TO SHOW") {
+      const data = {
+        message: "NO TRIPS TO SHOW"
+      }
+      response.render('allViews/allUserTrips', data)
     } else {     
 
+      
       const data = {
         result: result
       }
@@ -358,6 +378,12 @@ let search = (request, response) => {
     if (error) {
       console.error("query error:", error.stack);
      
+    } else if(result === null) {
+
+      const data = {
+        message: "NO RESULTS"
+      }
+      response.render("allViews/searchResult", data)
     } else {     
       let searchArr = []
   

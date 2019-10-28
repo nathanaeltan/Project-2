@@ -20,8 +20,8 @@ var responseHandler = function() {
                 <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=200&photoreference=${photoUrl}&key=${API_KEY}" alt="" height: auto width: 200px/>
 
                 <input  type="hidden" class="attractioninput" name="name" value="${responseObj.results[i].name}"/>
-                <p>${responseObj.results[i].formatted_address}</p>
-                <p>Rating: ${responseObj.results[i].rating}</p>
+                <p class="mt-4">${responseObj.results[i].formatted_address} </br>
+              <i> Rating: ${responseObj.results[i].rating}</i></p>
                 <button type="submit" id="addwishitem" value="${responseObj.results[i].name}" class="wishlistBtn btn btn-primary">Add To WishList</button>
             
                

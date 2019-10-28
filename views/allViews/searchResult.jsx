@@ -3,7 +3,12 @@ const Nav = require("./navbar.jsx")
 class Results extends React.Component {
   render() {
 
-    let list = this.props.result.map( item => {
+    let list;
+
+    if(this.props.message === "NO RESULTS") {
+      list = "NO RESULTS RETURNED"
+    } else {
+      list = this.props.result.map( item => {
         return(
             <div className="card">
                 <div className="card-body">
@@ -17,6 +22,8 @@ class Results extends React.Component {
             </div>
         )
     })
+    }
+ 
     
     
       

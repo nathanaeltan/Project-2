@@ -18,7 +18,7 @@ class Home extends React.Component {
           <div className="container">
             <div className="container text-center mt-5">
               <h3 className="display-3 border-bottom mb-4">
-                YOU ARE GOING TO {this.props.result.city_name}
+                YOU ARE GOING TO: <br/> {this.props.result.city_name}
               </h3>
 
               <div className="row">
