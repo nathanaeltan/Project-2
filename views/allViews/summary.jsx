@@ -32,7 +32,7 @@ class Home extends React.Component {
             crossOrigin="anonymous"
           ></link>
           <link rel="stylesheet" href="font.css"/>
-          <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        
           <script type="text/javascript" src="/jspdf.min.js"></script>
           <script type="text/javascript" src="/html2canvas.js"></script>
           <script src="/pdf.js"></script>
@@ -54,7 +54,7 @@ class Home extends React.Component {
             </footer>
           </div>
           <div className="container text-center">
-          <a href="javascript:genPDF()" className="btn btn-warning">Export As PDF</a>
+        
           </div>
       
         </body>
