@@ -23,12 +23,12 @@ for (let i = 0; i < responseObj.results.length; i++) {
   el.classList.add("list-group-item");
   el.innerHTML = `
 
-              <h3>${responseObj.results[i].name}</h3>
+              <h3 style="color: #A7C5C5;">${responseObj.results[i].name}</h3>
               <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=200&photoreference=${photoUrl}&key=${API_KEY}" alt="" height: auto width: 200px class="img-fluid"/>
 
               <input  type="hidden" class="attractioninput" name="name" value="${responseObj.results[i].name}"/>
-              <p class="mt-4">${responseObj.results[i].formatted_address} </br>
-            <i> Rating: ${responseObj.results[i].rating}</i></p>
+              <p class="mt-4" style="color: #A7C5C5;">${responseObj.results[i].formatted_address} </br>
+            <i style="color: #A7C5C5;"> Rating: ${responseObj.results[i].rating}</i></p>
               <button type="submit" id="addwishitem" value="${responseObj.results[i].name}" class="wishlistBtn btn btn-primary">Add To WishList</button>
           
              

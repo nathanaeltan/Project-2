@@ -13,10 +13,7 @@ class Home extends React.Component {
             crossOrigin="anonymous"
           ></link>
          
-          <script
-            type="text/javascript"
-            src="http://code.jquery.com/jquery-1.7.1.min.js"
-          ></script>
+          
           <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"></link>
           <link rel="stylesheet" href="font.css" />
         </head>
@@ -29,7 +26,7 @@ class Home extends React.Component {
           </div>
           
           <div className="container" id="wishlistItems" style={{display:"none"}}>
-            <div className="container text-center mt-5">
+            <div className="container text-center ">
               <h3
                 className="display-4 border-bottom mb-4"
                 style={{ color: "#354C56" }}

@@ -47,7 +47,7 @@ class Home extends React.Component {
         <body>
           <Navbar />
           <div className="container text-center mt-5">
-            <h3 className="display-3 " style={{borderBottom: "2px solid #F3FAEE" }}>
+            <h3 className="display-3 " style={{borderBottom: "2px solid #354C56" }}>
               Welcome {username}
             </h3>
           
@@ -64,7 +64,7 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="container text-center mt-5">
-            <h1 style={{color: "#F1FBED"}}>Your Latest Trip: </h1>
+            <h1 style={{color: "#354C56"}}>Your Latest Trip: </h1>
           {latestTrip}
             <footer className="footer mt-5">
               <div className="container-fluid">

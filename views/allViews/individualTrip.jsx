@@ -54,15 +54,13 @@ class Home extends React.Component {
             crossOrigin="anonymous"
           ></link>
         <link rel="stylesheet" href="/font.css"/>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-          <script type="text/javascript" src="/jspdf.min.js"></script>
-          <script type="text/javascript" src="/html2canvas.js"></script>
+        
           <script src="/pdf.js"></script>
         </head>
         <body>
         <Navbar/>
           <div className="container text-center mt-5" id="summary" >
-            <h3 className="display-4 border-bottom ">
+            <h3 className="display-4 border-bottom " style={{color: "#354C56"}}>
               Here is your Itinenary for: <br/> {city}
             </h3>
             <h4 className="pb-3 mt-3"><strong>{fromDate} - {toDate}</strong></h4>
@@ -70,7 +68,6 @@ class Home extends React.Component {
           </div>
         <div className="btn_container mt-3 pb-4 d-flex justify-content-center">
         <a href="/allTrips" className="btn btn-primary btn-lg">Back To Trips</a>
-        <a href="javascript:genPDF()" className="btn btn-warning ml-3">Export As PDF</a>
           {deletebtn}        
         </div>
         

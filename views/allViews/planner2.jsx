@@ -7,7 +7,7 @@ class Home extends React.Component {
         <li
           draggable="true"
           className="list-group-item items"
-          value={item.attraction_name} style={{backgroundColor:"#A7C5C5"}}
+          value={item.attraction_name} style={{backgroundColor:"#A7C5C5", color:"white", fontSize:"1.1rem"}}
         >
           {item.attraction_name}
         </li>
@@ -21,7 +21,7 @@ class Home extends React.Component {
         style={{backgroundColor:"#A0C6C6"}}
       >
      
-      <p className="border-bottom lead"> {i + 1}:00</p>
+      <p className="lead"> {i + 1}:00</p>
        
       </div>
     ));
@@ -34,7 +34,7 @@ class Home extends React.Component {
         className=" ml-1 border row"
       >
       <div className="col-12">
-      <h4 className="border-bottom dayText" > Day {i + 1}</h4>
+      <h4 className="dayText" style={{color:"black", fontWeight:"bold"}}> Day {i + 1}</h4>
       {hours}
       </div>
       
@@ -60,7 +60,7 @@ class Home extends React.Component {
         </head>
         <body>
         <Navbar/>
-          <div className="container text-center mt-5">
+          <div className="container text-center mt-3">
             <h3 className="display-3 border-bottom">
               Start Planning Your Trip
             </h3>
@@ -69,7 +69,7 @@ class Home extends React.Component {
               <div className="col-3" style={{overflow:"auto", maxHeight:"80vh"}}>
                 <h4>Attractions: </h4>{list}</div>
            
-              <div className="col-9 d-inline-flex text-center border-bottom days-holder">
+              <div className="col-9 d-inline-flex text-center days-holder">
                  {days}
               </div>
             </div>
