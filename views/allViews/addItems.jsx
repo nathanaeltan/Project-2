@@ -15,9 +15,9 @@ class Home extends React.Component {
         </head>
         <body>
           <Navbar/>
-          <div className="container">
+          <div className="container" id="wishlistItems">
             <div className="container text-center mt-5">
-              <h3 className="display-3 border-bottom mb-4">
+              <h3 className="display-3 border-bottom mb-4" style={{color: "#354C56"}}>
                 YOU ARE GOING TO: <br/> {this.props.result.city_name}
               </h3>
 
@@ -29,7 +29,7 @@ class Home extends React.Component {
                   </h3>
 
                   <ul id="attraction_list" className="list-group">
-                    <ul id="wishItem"></ul>
+                    <ul id="wishItem" ></ul>
                   </ul>
                 </div>
 

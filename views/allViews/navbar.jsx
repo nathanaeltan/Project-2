@@ -4,8 +4,8 @@ class Navbar extends React.Component {
   render() {
 
    
-      return(<nav class="navbar navbar-expand-lg navbar-light " style={{backgroundColor: "#e3f2fd"}}>
-  <a class="navbar-brand mb-0 h1" href="#">EZ TRIPPER</a>
+      return(<nav class="navbar  navbar-expand-lg navbar-light " style={{backgroundColor: "#2F4D57"}}>
+  <a class="navbar-brand mb-0 h1" href="#" style={{color:"#F2FCED" }}>EZ TRIPPER</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,13 +13,13 @@ class Navbar extends React.Component {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" href="/home" className="display-3">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/home" className="display-3" style={{color:"#F2FCED" }}>Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/addTrip">Add a Trip</a>
+        <a class="nav-link" href="/addTrip" style={{color:"#F2FCED" }}>Add a Trip</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/allTrips">See All Trips</a>
+        <a class="nav-link" href="/allTrips" style={{color:"#F2FCED" }}>See All Trips</a>
       </li>
   
       

@@ -2,10 +2,12 @@ let attractions = document.getElementById("attraction_list");
 let wishItem = document.getElementById("wishItem");
 let wishList = document.getElementById("wish_list")
 let API_KEY = "AIzaSyDvj3ORRNNhdf-Yv8R8AHZjqX_jHcnrxqo"
+let WLI = document.getElementById('wishlistItems')
 var responseHandler = function() {
 
   // RENDERING DATA FROM THE GOOGLE API TO THE DOM 
   var responseObj = JSON.parse(this.responseText);
+  document.body.style.display="block"
   console.log(responseObj);
   for (let i = 0; i < responseObj.results.length; i++) {
     let photoUrl = responseObj.results[i].photos[0].photo_reference
@@ -26,7 +28,8 @@ var responseHandler = function() {
             
                
                  `;
-
+    el.style.backgroundColor = "#2F4D57"
+    el.style.marginTop ="5px"
     wishItem.append(el);
   }
 
@@ -54,7 +57,7 @@ var responseHandler = function() {
         console.log(this.responseText);
       });
 
-      console.log(data);
+    
       let url = "/wishlist";
       request.open("POST", url);
       request.setRequestHeader(
@@ -73,6 +76,10 @@ var responseHandler = function() {
 var request = new XMLHttpRequest();
 
 // listen for the request response
+// request.onprogress= function(){
+//   console.log("THE READY STATE IS SDLKNASDASD", request.readyState)
+// }
+
 request.addEventListener("load", responseHandler);
 
 let thelocation = document.cookie
@@ -80,7 +87,9 @@ let thelocation = document.cookie
   .slice(10, document.cookie.length);
 // ready the system by calling open, and specifying the url
 var url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=Attractions+in+${thelocation}&key=AIzaSyDvj3ORRNNhdf-Yv8R8AHZjqX_jHcnrxqo`;
-request.open("GET", url);
+request.open("GET", url );
+
 
 // send the request
 request.send();
+

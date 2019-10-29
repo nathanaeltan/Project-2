@@ -12,12 +12,11 @@ class Home extends React.Component {
     title= "Here Are Your Trips: "
     list =  this.props.result.map(item => {
       return(
-          <div className="card">
+          <div className="card mt-1" style={{backgroundColor:"#A0C6C6", border:"1px solid #2F4D57"}}>
             <div className="card-body">
             <h3 className="card-title"> <a href={"/allTrips/" + item.id}>{item.trip_name}</a></h3>
               <p>City: {item.city_name}</p>
-              <p>Duration: <br/> {item.from_date.toString().slice(0, 15)} <br/>
-              To <br/> {item.to_date.toString().slice(0, 15)} </p>
+              <p>Duration: <br/> {item.from_date.toString().slice(0, 15)} - {item.to_date.toString().slice(0, 15)} </p>
             </div>
             
           </div>

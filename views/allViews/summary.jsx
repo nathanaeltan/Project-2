@@ -9,11 +9,11 @@ class Home extends React.Component {
     let list = arr.map((item) => {
      
       return(
-        <ul className="list-group-item ml-4 text-center "> 
-        <div className="d-flex justify-content-center">
-          <li className="list-group-item col-2 " style={{display: "flex", flexDirection:"row", alignItems:"center", justifyContent: "center"}} ><h3 style={{}}>{item.day}</h3> </li>
-        <li className="list-group-item col-2">{item.event.map(el => <p className=" border-bottom">{el.time.toString().slice(0 , 5)}</p>)}</li>
-        <li className="list-group-item col-7">{item.event.map(el => <p className=" border-bottom">{el.attraction}</p>)}</li>
+        <ul className=" ml-4 text-center " style={{backgroundColor:"#A0C6C6", fontSize:"1.6rem"}}> 
+        <div className="d-flex justify-content-center" style={{backgroundColor:"#A0C6C6"}}>
+          <li className="list-group-item col-2 " style={{display: "flex", flexDirection:"row", alignItems:"center", justifyContent: "center", backgroundColor:"#A0C6C6"}} ><h3 style={{}}>{item.day}</h3> </li>
+        <li className="list-group-item col-2" style={{backgroundColor:"#A0C6C6"}}>{item.event.map(el => <p className=" border-bottom">{el.time.toString().slice(0 , 5)}</p>)}</li>
+        <li className="list-group-item col-7" style={{backgroundColor:"#A0C6C6"}}>{item.event.map(el => <p className=" border-bottom">{el.attraction}</p>)}</li>
          
         </div>
       

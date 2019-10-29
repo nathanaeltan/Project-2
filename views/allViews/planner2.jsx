@@ -7,7 +7,7 @@ class Home extends React.Component {
         <li
           draggable="true"
           className="list-group-item items"
-          value={item.attraction_name}
+          value={item.attraction_name} style={{backgroundColor:"#A7C5C5"}}
         >
           {item.attraction_name}
         </li>
@@ -18,7 +18,7 @@ class Home extends React.Component {
       <div
       id={"0"+(i + 1) + ": 00"}
         className="hours days list-group-item"
-        
+        style={{backgroundColor:"#A0C6C6"}}
       >
      
       <p className="border-bottom lead"> {i + 1}:00</p>

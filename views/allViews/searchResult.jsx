@@ -10,7 +10,7 @@ class Results extends React.Component {
     } else {
       list = this.props.result.map( item => {
         return(
-            <div className="card">
+            <div className="card" style={{backgroundColor:"#A0C6C6", fontSize:"1.3rem", border:"1px solid #2F4D57"}}>
                 <div className="card-body">
 
                 <h2 className="card-title"><a href={"/allTrips/" + item.id}>{item.trip_name}</a> </h2>
@@ -32,6 +32,8 @@ class Results extends React.Component {
       <head>
       <link rel="stylesheet" href="font.css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="/font.css"/>
+
         </head>
        <body>
          <Nav/>

@@ -247,6 +247,26 @@ callback(null, result.rows[0])
     });
   }
 
+  let getNoDataTrip = (userId, tripId, callback) => {
+    let input = [userId, tripId]
+    let queryString = "SELECT * FROM trips WHERE id = $2 AND trips.trip_user_id = $1;"
+    dbPoolInstance.query(queryString, input, (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        if (result.rows.length > 0) {
+          console.log("SAJHDASJDASJD", result.rows[0])
+           callback(null, result.rows[0])
+    
+        }   else {
+         
+          console.log(result.rows.length)
+          callback(null, null);
+        }
+      }
+    });
+  }
+
 let editPage = (tripId, userId, callback) => {
 let input = [userId, tripId];
 let queryString = "SELECT summary.day, summary.time, summary.attraction, trips.city_name FROM summary INNER JOIN trips ON (summary.trips_id = trips.id) WHERE trips.trip_user_id = $1 AND summary.trips_id=$2 ORDER BY day, time ASC;"
@@ -318,6 +338,7 @@ let searchTrips = (userId, callback) => {
    getSummary,
    getUsersTrips,
    getAUserTrip,
+   getNoDataTrip,
    editPage,
    deleteUserTrip,
    searchTrips,
