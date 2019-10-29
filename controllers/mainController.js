@@ -231,7 +231,7 @@ module.exports = db => {
         };
         setTimeout(() => {
           response.render("allViews/summary", data);
-        }, 2000);
+        }, 4000);
         
       }
     });
