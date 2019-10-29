@@ -229,8 +229,10 @@ module.exports = db => {
           test: test,
           result: result
         };
-
-        response.render("allViews/summary", data);
+        setTimeout(() => {
+          response.render("allViews/summary", data);
+        }, 2000);
+        
       }
     });
   };
