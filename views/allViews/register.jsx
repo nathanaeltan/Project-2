@@ -21,7 +21,7 @@ class Register extends React.Component {
         </head>
         <body>
           <div className="container text-center" style={{padding: "50px 90px;"}}>
-          <h3 className="display-5">Please Register</h3>
+          <h3 className="display-5" style={{color: "black"}}>Please Register</h3>
           {message}
           <form action="/register" method="POST">
           <p><input type="text" name="name" placeholder="Name" className="form-control form-control-lg" required/></p>

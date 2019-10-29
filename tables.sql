@@ -11,7 +11,10 @@ CREATE TABLE IF NOT EXISTS trips (
     id SERIAL PRIMARY KEY,
     trip_name TEXT,
     city_name TEXT,
-    trip_user_id INTEGER
+    trip_user_id INTEGER,
+    from_date DATE,
+    to_date DATE
+
 );
 
 CREATE TABLE IF NOT EXISTS summary (

@@ -44,6 +44,7 @@ class Home extends React.Component {
             <h3 className="display-4 border-bottom">
               Here is your Itinenary for: <br/> {this.props.location}
             </h3>
+            <div id="loading">ASKDJABDKSABd</div>
             <h4 className="pb-3"><strong>{this.props.result[0].from_date.toString().slice(0, 15)} - {this.props.result[0].to_date.toString().slice(0, 15)}</strong></h4>
             <div className="col-12 text-center mt-4" >{list}</div>
             <footer className="footer mt-5">

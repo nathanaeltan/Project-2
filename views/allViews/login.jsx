@@ -22,7 +22,7 @@ class Login extends React.Component {
         <body>
 
           <div className="container mt-2 pb-5 pt-5 pl-5 pr-5 text-center">
-          <h3 className="display-5">Please log In </h3>
+          <h3 className="display-5" style={{color: "black"}}>Please log In </h3>
           {message}
           <form action="/login" method="POST">
           <p><input type="text" name="username" placeholder="User Name" className="form-control form-control-lg" required/></p>

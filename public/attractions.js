@@ -3,12 +3,13 @@ let wishItem = document.getElementById("wishItem");
 let wishList = document.getElementById("wish_list")
 let API_KEY = "AIzaSyDvj3ORRNNhdf-Yv8R8AHZjqX_jHcnrxqo"
 let WLI = document.getElementById('wishlistItems')
+let wishlistTitle = document.getElementById('wishlist_title')
+
+
 var responseHandler = function() {
 
   // RENDERING DATA FROM THE GOOGLE API TO THE DOM 
   var responseObj = JSON.parse(this.responseText);
-  document.body.style.display="block"
-  console.log(responseObj);
   for (let i = 0; i < responseObj.results.length; i++) {
     let photoUrl = responseObj.results[i].photos[0].photo_reference
     let placeId = responseObj.results[i].place_id
@@ -19,7 +20,7 @@ var responseHandler = function() {
     el.innerHTML = `
 
                 <h3>${responseObj.results[i].name}</h3>
-                <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=200&photoreference=${photoUrl}&key=${API_KEY}" alt="" height: auto width: 200px/>
+                <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=200&photoreference=${photoUrl}&key=${API_KEY}" alt="" height: auto width: 200px class="img-fluid"/>
 
                 <input  type="hidden" class="attractioninput" name="name" value="${responseObj.results[i].name}"/>
                 <p class="mt-4">${responseObj.results[i].formatted_address} </br>
@@ -31,6 +32,7 @@ var responseHandler = function() {
     el.style.backgroundColor = "#2F4D57"
     el.style.marginTop ="5px"
     wishItem.append(el);
+
   }
 
   // SENDS DATA TO THE CONTROLLER TO THE TABLE AND UPDATE BUTTTON STYLINGS AND MOVE THE ITEM TO THE WISHLIST SECTION
@@ -72,15 +74,22 @@ var responseHandler = function() {
 
 };
 
+
+function updateProgress(evt){
+  if (evt.lengthComputable){
+     var percentComplete = (evt.loaded / evt.total)*100;  
+      console.log(percentComplete+"% completed");
+   } 
+}
 // make a new request
 var request = new XMLHttpRequest();
-
+request.onprogress=updateProgress;
 // listen for the request response
 // request.onprogress= function(){
 //   console.log("THE READY STATE IS SDLKNASDASD", request.readyState)
 // }
 
-request.addEventListener("load", responseHandler);
+
 
 let thelocation = document.cookie
   .split(";")[3]
@@ -91,5 +100,6 @@ request.open("GET", url );
 
 
 // send the request
+request.addEventListener("load", responseHandler);
 request.send();
 

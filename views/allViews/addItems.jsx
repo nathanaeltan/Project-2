@@ -11,14 +11,21 @@ class Home extends React.Component {
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
             crossOrigin="anonymous"
           ></link>
-          <link rel="stylesheet" href="font.css"/>
+          <link rel="stylesheet" href="font.css" />
+          <script
+            type="text/javascript"
+            src="http://code.jquery.com/jquery-1.7.1.min.js"
+          ></script>
         </head>
         <body>
-          <Navbar/>
+          <Navbar />
           <div className="container" id="wishlistItems">
             <div className="container text-center mt-5">
-              <h3 className="display-3 border-bottom mb-4" style={{color: "#354C56"}}>
-                YOU ARE GOING TO: <br/> {this.props.result.city_name}
+              <h3
+                className="display-3 border-bottom mb-4"
+                style={{ color: "#354C56" }}
+              >
+                YOU ARE GOING TO: <br /> {this.props.result.city_name}
               </h3>
 
               <div className="row">
@@ -29,12 +36,12 @@ class Home extends React.Component {
                   </h3>
 
                   <ul id="attraction_list" className="list-group">
-                    <ul id="wishItem" ></ul>
+                    <ul id="wishItem"></ul>
                   </ul>
                 </div>
 
                 <div className="col-6">
-                  <h3>YOUR WISHLIST: </h3>
+                  <h3 id="wishlist_title">YOUR WISHLIST: </h3>
                   <ul id="wish_list" className="list-group"></ul>
                 </div>
               </div>
@@ -49,6 +56,7 @@ class Home extends React.Component {
           </div>
 
           <script src="/attractions.js"></script>
+          
         </body>
       </html>
     );
