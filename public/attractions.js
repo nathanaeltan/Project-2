@@ -95,7 +95,7 @@ let thelocation = document.cookie
   .split(";")[3]
   .slice(10, document.cookie.length);
 // ready the system by calling open, and specifying the url
-var url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=Attractions+in+${thelocation}&key=AIzaSyDvj3ORRNNhdf-Yv8R8AHZjqX_jHcnrxqo`;
+var url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=Attractions+in+${thelocation}&key=${API_KEY}`;
 request.open("GET", url );
 
 
