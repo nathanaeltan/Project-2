@@ -57,3 +57,7 @@ npm install
 ![wireFrames](https://github.com/nathanaeltan/Project-2/blob/master/images/planner.png)
 ![wireFrames](https://github.com/nathanaeltan/Project-2/blob/master/images/summary.png)
 ![wireFrames](https://github.com/nathanaeltan/Project-2/blob/master/images/attractions.png)
+
+## User Stories
+
+User Will be led through the add trips process to select a country and date, then pick attractions from that city and drop them into the time slot that they want to do the activity. 
