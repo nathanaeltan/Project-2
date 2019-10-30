@@ -1,0 +1,48 @@
+Approach and Process
+===========================
+
+
+What in my process and approach to this project would I do differently next time?
+---------------------------
+Planned out everything on paper including the ERD then started with basic functionality before moving on to any bonus features and ending with the stylings. 
+Experimented with the API that I used to see what kind of data I would receive back.
+
+In future I need to be very specific about the kind of data that I want to push to my database and the format in which I want to use it when I eventually pull it from my database. because that was where I had the most trouble, I did not think about how troublesome it would be to render out the data when it did not come from my database in a correct format. 
+
+
+What in my process and approach to this project went well that I would repeat next time?
+---------------------------
+I think that the basic flow of the project was fine in the sense that I tackled the routes according to how the user would use the website, so it was easier for me to trace back if there were any errors. Using MVC definitely helped in terms of finding where potential errors could arise. 
+
+
+
+Code and Code Design
+============================
+
+What in my code and program design in the project would I do differently next time?
+----------------------------
+I think the way I handled fetching data from the DOM was quite complicated. Not sure if there is an easier way to do it but it definitely was not an efficient way to do things. 
+
+This was how i fetched data from the planner page after the user selected the attractions. It was forEach within a forEach which went through the childnodes to fetch data.
+
+
+EG: 
+let data = []
+dayArr.forEach((x,i)=>{
+    let day = x.childNodes[0].childNodes[0].innerText
+   dayArr[i].childNodes[0].childNodes.forEach((y, j)=>{
+       if(x.childNodes[0].childNodes[j].childNodes[1] !== undefined) {
+           let time = x.childNodes[0].childNodes[j].childNodes[0].innerText
+        let attraction = x.childNodes[0].childNodes[j].childNodes[1].innerText
+        data.push({
+            day: day,
+            time: time,
+            attraction: attraction
+        })
+       }
+   })
+})
+
+
+What in my code and program design in the project went well? Is there anything I would do the same next time?
+-----------------------

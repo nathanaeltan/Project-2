@@ -5,7 +5,9 @@ Planning a trip has never been easier, just select what attractions you want to 
 
 ## Technology used
 Javascript
+
 NodeJS 
+
 Express
 React
 Bootstrap 
@@ -30,9 +32,13 @@ npm install
 
 
 ## Unsolved Problems
-Still Need an edit function and a better way to pull data other than just pulling data form the DOM
+-Still Need an edit function and a better way to pull data other than just pulling data form the DOM
+
+-On Heroku, if the user adds too a certain number of attractions to the summary 
 
 
 ## ERD
 
 ![ERD](https://github.com/nathanaeltan/Project-2/blob/master/images/ERD.png)
+
+
