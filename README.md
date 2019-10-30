@@ -31,3 +31,8 @@ npm install
 
 ## Unsolved Problems
 Still Need an edit function and a better way to pull data other than just pulling data form the DOM
+
+
+## ERD
+
+![ERD](https://github.com/nathanaeltan/Project-2/blob/master/images/ERD.png)
