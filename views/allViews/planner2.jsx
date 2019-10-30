@@ -31,7 +31,7 @@ class Home extends React.Component {
     let days = [...Array(n)].map((e, i) => (
       <div
      
-        className=" ml-1 border row"
+        className=" ml-1  row"
       >
       <div className="col-12">
       <h4 className="dayText" style={{color:"black", fontWeight:"bold"}}> Day {i + 1}</h4>

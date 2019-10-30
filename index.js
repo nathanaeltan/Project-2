@@ -2,6 +2,7 @@ const express = require("express");
 const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
 const sha256 = require("js-sha256");
+var cors = require('cors')
 
 /**
  * ===================================
@@ -12,9 +13,11 @@ const sha256 = require("js-sha256");
 // Init express app
 const app = express();
 app.use(express.json());
-// Set up middleware
-app.use(methodOverride("_method"));
 
+// Set up middleware
+app.use(cors())
+app.use(methodOverride("_method"));
+app.options('*', cors())
 app.use(cookieParser());
 
 app.use(express.static("public"));
