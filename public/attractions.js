@@ -110,13 +110,10 @@ let thelocation = document.cookie
   .split(";")[3]
   .slice(10, document.cookie.length);
 // ready the system by calling open, and specifying the url
-var url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=Attractions+in+${thelocation}&key=${API_KEY}`;
+var url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=Attractions+in+${thelocation}&key=${API_KEY}`;
 request.open("GET", url);
 
 // send the request
 // request.addEventListener("load", responseHandler);
-
-
-
 
 request.send();
