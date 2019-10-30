@@ -23,6 +23,7 @@ Google Places API
 
 ## Installation
 npm install
+```
  "dependencies": {
     "bootstrap": "^4.3.1",
     "cookie-parser": "^1.4.4",
@@ -36,7 +37,7 @@ npm install
     "react": "^16.10.2",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.10.2"
-
+```
 
 ## Unsolved Problems
 -Still Need an edit function and a better way to pull data other than just pulling data form the DOM
