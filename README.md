@@ -41,8 +41,9 @@ npm install
 ## Unsolved Problems
 -Still Need an edit function and a better way to pull data other than just pulling data form the DOM
 
--On Heroku, if the user adds too a certain number of attractions to the summary 
+-On Heroku, if the user adds too a certain number of attractions to the summary , the page will take a long time to load. 
 
+-if the user refreshes the page at the add attractions section, it will keep registering a new trip
 
 ## ERD
 

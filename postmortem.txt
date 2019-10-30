@@ -46,3 +46,19 @@ dayArr.forEach((x,i)=>{
 
 What in my code and program design in the project went well? Is there anything I would do the same next time?
 -----------------------
+WDI Unit 2 Post Mortem
+======================
+
+
+What habits did I use during this unit that helped me?
+------------------------
+Planning with ERD and using MVC helped with debugging which I plan to use from now on. 
+
+What habits did I have during this unit that I can improve on?
+-------------------------
+Planning my data better, would save me alot of headache with the data manipulation down the road. 
+
+
+How is the overall level of the course during this unit? (instruction, course materials, etc.)
+--------------------------
+So far relatively mangeable. 
