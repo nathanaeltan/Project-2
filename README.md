@@ -1,6 +1,8 @@
-# Project-2
+# EZ TRIPPER
+## Link
+https://lit-falls-64728.herokuapp.com/welcome
 
-## EZ TRIPPER
+## About
 Planning a trip has never been easier, just select what attractions you want to see on your trip, and drag and drop it into the times. It will then generate a summary for ease of use. 
 
 ## Technology used
@@ -9,10 +11,15 @@ Javascript
 NodeJS 
 
 Express
+
 React
+
 Bootstrap 
+
 PostGres
+
 Google Places API
+
 
 ## Installation
 npm install
@@ -42,3 +49,11 @@ npm install
 ![ERD](https://github.com/nathanaeltan/Project-2/blob/master/images/ERD.png)
 
 
+## Wire Frames
+
+![wireFrames](https://github.com/nathanaeltan/Project-2/blob/master/images/home.png)
+![wireFrames](https://github.com/nathanaeltan/Project-2/blob/master/images/addTrip.png)
+![wireFrames](https://github.com/nathanaeltan/Project-2/blob/master/images/login.png)
+![wireFrames](https://github.com/nathanaeltan/Project-2/blob/master/images/planner.png)
+![wireFrames](https://github.com/nathanaeltan/Project-2/blob/master/images/summary.png)
+![wireFrames](https://github.com/nathanaeltan/Project-2/blob/master/images/attractions.png)
